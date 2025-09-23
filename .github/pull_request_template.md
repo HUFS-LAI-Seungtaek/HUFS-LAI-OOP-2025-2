@@ -38,6 +38,10 @@ Please do not modify this section manually.
 - [ ] Implemented required functionality
 - [ ] All tests pass locally
 
+### Problem 6 (Optional)
+- [ ] Implemented required functionality
+- [ ] All tests pass locally
+
 ## Testing
 - [ ] I have run `python grader.py` locally
 - [ ] All implemented problems pass their tests

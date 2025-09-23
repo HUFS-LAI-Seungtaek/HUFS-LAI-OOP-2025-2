@@ -44,7 +44,8 @@ class AssignmentValidator:
                     'problem3/README.md',
                     'problem3/main.py',
                     'problem4/README.md',
-                    'problem5/README.md'
+                    'problem5/README.md',
+                    'problem6/README.md'
                 ],
                 'required_dirs': [
                     'problem1',
@@ -54,7 +55,8 @@ class AssignmentValidator:
                     'problem2/textops/tokenize',
                     'problem3',
                     'problem4',
-                    'problem5'
+                    'problem5',
+                    'problem6'
                 ],
                 'optional_files': [
                     'problem4/dsops/__init__.py',
@@ -64,7 +66,8 @@ class AssignmentValidator:
                     'problem4/dsops/stats/__init__.py',
                     'problem4/dsops/stats/labels.py',
                     'problem5/cachekit/__init__.py',
-                    'problem5/cachekit/main.py'
+                    'problem5/cachekit/main.py',
+                    'problem6/main.py'
                 ]
             }
         }
