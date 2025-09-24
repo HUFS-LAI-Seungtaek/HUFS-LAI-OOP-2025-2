@@ -129,20 +129,7 @@ git add submissions/YOUR_STUDENT_ID/assignment2/problem1/main.py
 git add submissions/YOUR_STUDENT_ID/assignment2/problem2/textops/
 
 # 커밋
-git commit -m "Add problem1/main.py
-
-Implement Accumulator class with property patterns"
-```
-
-### 3. Pull Request 생성
-
-```bash
-# 브랜치 생성 및 푸시
-git checkout -b assignment2-YOUR_STUDENT_ID
-git push -u origin assignment2-YOUR_STUDENT_ID
-
-# 또는 GitHub CLI 사용
-gh pr create --title "2nd Assignment by YOUR_STUDENT_ID (Your Full Name)" --body "Assignment 2 submission"
+git commit -m "Add problem1/main.py"
 ```
 
 ## ✅ 체크리스트
