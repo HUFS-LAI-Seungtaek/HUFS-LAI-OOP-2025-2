@@ -15,7 +15,35 @@
 
 ## 🚀 시작하기
 
-### 1. 과제 파일 복사
+### 1. 저장소 준비
+
+#### 첫 번째 과제인 경우 (Fork)
+```bash
+# GitHub에서 organization 저장소를 본인 계정으로 fork
+# 웹 브라우저에서 https://github.com/HUFS-LAI-Seungtaek/HUFS-LAI-OOP-2025-2 접속
+# 우측 상단의 "Fork" 버튼 클릭
+
+# fork한 저장소를 로컬로 클론
+git clone https://github.com/YOUR_USERNAME/HUFS-LAI-OOP-2025-2.git
+cd HUFS-LAI-OOP-2025-2
+```
+
+#### 이미 fork한 경우 (동기화)
+```bash
+# 기존 로컬 저장소로 이동
+cd HUFS-LAI-OOP-2025-2
+
+# upstream 원격 저장소 설정 (최초 1회만)
+git remote add upstream https://github.com/HUFS-LAI-Seungtaek/HUFS-LAI-OOP-2025-2.git
+
+# 최신 변경사항 가져오기
+git checkout main
+git fetch upstream
+git merge upstream/main
+git push origin main
+```
+
+### 2. 과제 파일 복사
 
 ```bash
 # 현재 디렉토리에서 과제 파일들을 자신의 제출 디렉토리로 복사
@@ -29,7 +57,7 @@ ls submissions/YOUR_STUDENT_ID/assignment2
 # 결과: problem1 problem2 problem3 problem4 problem5 problem6
 ```
 
-### 2. 작업 디렉토리로 이동
+### 3. 작업 디렉토리로 이동
 
 ```bash
 cd submissions/YOUR_STUDENT_ID/assignment2
@@ -218,8 +246,14 @@ git status
 # 브랜치 생성과 동시에 체크아웃
 git checkout -b assignment2-YOUR_STUDENT_ID
 
-# 원격 저장소에 푸시
+# 원격 저장소에 푸시 (본인의 fork로)
 git push -u origin assignment2-YOUR_STUDENT_ID
+
+# GitHub 웹에서 PR 생성
+# 1. https://github.com/YOUR_USERNAME/HUFS-LAI-OOP-2025-2 접속
+# 2. "Compare & pull request" 버튼 클릭
+# 3. base repository를 HUFS-LAI-Seungtaek/HUFS-LAI-OOP-2025-2로, base를 main으로 설정
+# 4. PR 제목: "2nd Assignment by YOUR_STUDENT_ID (Your Full Name)"
 ```
 
 ### 문제 해결
@@ -242,5 +276,8 @@ git pull origin main
 ---
 
 **주의사항**:
+- 반드시 organization 저장소를 fork한 후 작업하세요
+- 과제 시작 전 upstream과 동기화하여 최신 버전을 사용하세요
 - 반드시 지정된 디렉토리 구조를 따라야 자동 검증이 통과됩니다
+- PR은 본인의 fork에서 organization 저장소의 main 브랜치로 생성하세요
 - PR 제목 형식을 정확히 지켜주세요: `2nd Assignment by {학번} (이름)`
