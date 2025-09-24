@@ -28,7 +28,10 @@ git clone https://github.com/YOUR_USERNAME/HUFS-LAI-OOP-2025-2.git
 cd HUFS-LAI-OOP-2025-2
 ```
 
-#### 이미 fork한 경우 (동기화)
+#### 이미 fork했고, 웹에서 sync를 하고 싶은 경우
+- https://github.com/YOUR_USERNAME/HUFS-LAI-OOP-2025-2 에 접속해서 `Sync fork` 버튼 클릭 후 `Update branch` 선택.
+
+#### 이미 fork했지만 터미널에서 작업하고 싶은 경우
 ```bash
 # 기존 로컬 저장소로 이동
 cd HUFS-LAI-OOP-2025-2
@@ -43,9 +46,17 @@ git merge upstream/main
 git push origin main
 ```
 
+- 추가 설명 (2025-09-24 업데이트): 이 때 `upstream` 은 교수 repository (https://github.com/HUFS-LAI-Seungtaek/HUFS-LAI-OOP-2025-2) 이고, `origin` 은 여러분 학생 repository (https://github.com/YOUR_USERNAME/HUFS-LAI-OOP-2025-2) 입니다.
+
 ### 2. 과제 파일 복사
 
 ```bash
+# submissions 디렉토리 생성
+mkdir submissions
+
+# submissions 디렉토리 아래 본인 학번으로 디렉토리 생성
+mkdir submissions/YOUR_STUDENT_ID
+
 # 현재 디렉토리에서 과제 파일들을 자신의 제출 디렉토리로 복사
 cp -r assignments/assignment2 submissions/YOUR_STUDENT_ID/
 
@@ -115,6 +126,9 @@ submissions/YOUR_STUDENT_ID/assignment2/
 ### 개별 문제 테스트
 
 ```bash
+# 현재 위치 확인 (xxx/HUFS-LAI-OOP-2025-2/submissions/YOUR_STUDENT_ID/assignment2 로 표시되어야 함.)
+pwd
+
 # Problem 1 테스트
 cd problem1 && python main.py
 
