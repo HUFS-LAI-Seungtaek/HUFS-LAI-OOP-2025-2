@@ -50,6 +50,11 @@ git push origin main
 
 ### 2. 과제 파일 복사
 
+`assignments/` 디렉토리는 첫 화면에서 안내하듯이 과제 공지 및 템플릿 제공을 목적으로 하기 때문에, `assignments/` 에서는 코드를 수정하시면 안 됩니다.
+이번 과제 제출을 위한 모든 파일 및 변경 사항은 `submissions/` 아래에서만 이루어져야 합니다.
+아래는 명령어들은 터미널(cmd, git bash 등)을 통해 `submissions/` 아래에 `assignments/` 에서 제공하는 템플릿을 옮기는 방법입니다.
+터미널이 익숙하지 않다면 직접 윈도우 폴더를 열어서 복사 후 작업해도 상관없습니다. 
+
 ```bash
 # submissions 디렉토리 생성
 mkdir submissions
