@@ -138,7 +138,7 @@ pwd
 cd problem1 && python main.py
 
 # Problem 2 테스트
-cd problem2/textops && python main.py
+cd problem2 && python -m textops.main
 
 # Problem 3 테스트
 cd problem3 && python main.py
