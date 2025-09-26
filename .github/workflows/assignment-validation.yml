@@ -6,6 +6,11 @@ on:
       - 'submissions/**'
     types: [opened, synchronize, reopened]
 
+permissions:
+  pull-requests: write
+  issues: write
+  contents: read
+
 jobs:
   validate-assignment-structure:
     runs-on: ubuntu-latest
@@ -69,9 +74,6 @@ jobs:
     needs: validate-assignment-structure
     runs-on: ubuntu-latest
     if: always()
-    permissions:
-      pull-requests: write
-      issues: write
 
     steps:
     - name: Checkout code
