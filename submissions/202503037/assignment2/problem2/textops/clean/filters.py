@@ -9,13 +9,13 @@ def clean_text(s: str) -> str:
       3) collapse all whitespace to single spaces
       4) remove ASCII punctuation except apostrophes (') and hyphens (-)
     """
-
     s=s.lower()
-    s=s.strip()
     s=re.sub(r"\s+", " ", s)
+    s=s.strip() 
     keep = {"'", "-"}
     s = ''.join(ch for ch in s if ch not in set(string.punctuation)-keep)
     return s
+    raise NotImplementedError
 
 
 if __name__ == "__main__":

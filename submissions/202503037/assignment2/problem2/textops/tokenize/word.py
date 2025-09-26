@@ -5,7 +5,8 @@ def word_tokens(s: str) -> list[str]:
     """
     if not s or s.strip() == "":
         return []
-    return s.split(" ")
+    s=s.split(" ")
+    return s
     raise NotImplementedError
 
 

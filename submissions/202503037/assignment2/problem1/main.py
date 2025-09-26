@@ -12,7 +12,7 @@ class Accumulator:
 
     @total.setter
     def total(self, value: float) -> None:
-        raise AssertionError
+        raise AssertionError("Cannot set total directly; use add() or reset()")
         
 
     def add(self, x: float) -> float:
