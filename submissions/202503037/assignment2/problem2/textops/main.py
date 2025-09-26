@@ -8,4 +8,4 @@ if __name__ == "__main__":
         print(word_tokens(cleaned))     # expected: ["hello", "world"]
         print("textops demo OK")
     except Exception as e:
-        print("Implement textops first:", e)
+        print("Implement textops first:", e) #야호 성공!!
