@@ -99,46 +99,17 @@ jobs:
             \`\`\`
             submissions/{student_id}/assignment{N}/
             ├── problem1/
-            │   ├── README.md
-            │   └── main.py
             ├── problem2/
-            │   ├── README.md
-            │   └── textops/
-            │       ├── __init__.py
-            │       ├── main.py
-            │       ├── clean/
-            │       │   ├── __init__.py
-            │       │   └── filters.py
-            │       └── tokenize/
-            │           ├── __init__.py
-            │           └── word.py
             ├── problem3/
-            │   ├── README.md
-            │   └── main.py
             ├── problem4/
-            │   ├── README.md
-            │   └── dsops/
-            │       ├── __init__.py
-            │       ├── main.py
-            │       ├── split/
-            │       │   ├── __init__.py
-            │       │   └── train_test.py
-            │       └── stats/
-            │           ├── __init__.py
-            │           └── labels.py
             ├── problem5/
-            │   ├── README.md
-            │   └── cachekit/
-            │       ├── __init__.py
-            │       └── main.py
-            └── grader.py
+            └── problem6/
             \`\`\`
 
             ### Common Issues:
             - **Incorrect PR title format** (must follow: "Nth Assignment by {student_id} (Full Name)")
-            - Missing required files
+            - Missing required directories (problem1~6)
             - Incorrect directory structure
-            - Files in wrong locations
             - Missing student ID in path
             - Invalid student ID format (must be 7-9 digits)
 
@@ -161,8 +132,8 @@ jobs:
 
             ### Next Steps:
             1. Check that all your code implements the required functionality
-            2. Run \`python grader.py\` locally to test your solutions
-            3. Make sure all tests pass before final submission
+            2. Test your solutions locally before final submission
+            3. Make sure everything works correctly
 
             Good luck with your assignment! 🚀`
           });
