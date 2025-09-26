@@ -69,12 +69,15 @@ jobs:
     needs: validate-assignment-structure
     runs-on: ubuntu-latest
     if: always()
+    permissions:
+      pull-requests: write
+      issues: write
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Comment on PR
+    - name: Comment on PR failure
       if: needs.validate-assignment-structure.result == 'failure'
       uses: actions/github-script@v7
       with:
@@ -116,7 +119,7 @@ jobs:
             Please fix these issues and push again. The validation will run automatically.`
           });
 
-    - name: Comment on success
+    - name: Comment on PR success
       if: needs.validate-assignment-structure.result == 'success'
       uses: actions/github-script@v7
       with:
