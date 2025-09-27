@@ -9,3 +9,5 @@ if __name__ == "__main__":
         print("textops demo OK")
     except Exception as e:
         print("Implement textops first:", e)
+
+        
