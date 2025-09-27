@@ -144,10 +144,10 @@ cd problem2 && python -m textops.main
 cd problem3 && python main.py
 
 # Problem 4 테스트
-cd problem4/dsops && python main.py
+cd problem4 && python -m dsops.main
 
 # Problem 5 테스트
-cd problem5/cachekit && python main.py
+cd problem5 && python -m cachekit.main
 
 # Problem 6 테스트
 cd problem6 && python main.py
