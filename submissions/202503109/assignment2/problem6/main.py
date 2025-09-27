@@ -15,7 +15,7 @@ class Metric(ABC):
         """
         # TODO: 지표 이름을 인스턴스 변수에 저장하세요
         # 힌트: self.name = name
-        raise NotImplementedError
+        self.name = name
 
     @abstractmethod
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
@@ -33,9 +33,8 @@ class Metric(ABC):
         """
         # TODO: compute 메서드를 호출하여 지표를 계산하고 문자열로 반환하세요
         # 힌트:
-        # 1) score = self.compute(y_true, y_pred)
-        # 2) return f"{self.name}: {score:.3f}"
-        raise NotImplementedError
+        score = self.compute(y_true, y_pred)
+        return f"{self.name}: {score:.3f}"
 
 
 class Accuracy(Metric):
@@ -44,8 +43,8 @@ class Accuracy(Metric):
         정확도 지표 초기화.
         """
         # TODO: 부모 클래스 생성자를 호출하세요
-        # 힌트: super().__init__("Accuracy")
-        raise NotImplementedError
+        super().__init__("Accuracy")
+        
 
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
         """
@@ -54,9 +53,11 @@ class Accuracy(Metric):
         # TODO: 정확도를 계산하세요
         # 힌트:
         # 1) 빈 리스트인 경우 0.0 반환
-        # 2) correct = sum(1 for t, p in zip(y_true, y_pred) if t == p)
-        # 3) return correct / len(y_true)
-        raise NotImplementedError
+        if not y_true:
+            return 0.0
+        correct = sum(1 for t, p in zip(y_true, y_pred) if t == p)
+        return correct / len(y_true)
+        
 
 
 class Precision(Metric):
@@ -68,7 +69,9 @@ class Precision(Metric):
         # 힌트:
         # 1) super().__init__("Precision")
         # 2) self.positive_class = positive_class
-        raise NotImplementedError
+        
+        super().__init__("Precision")
+        self.positive_class = positive_class
 
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
         """
@@ -81,7 +84,18 @@ class Precision(Metric):
         # 3) 분모가 0이면 0.0 반환
         # 4) TP = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
         # 5) FP = sum(1 for t, p in zip(y_true, y_pred) if t != self.positive_class and p == self.positive_class)
-        raise NotImplementedError
+        tp = sum(
+            1 for t, p in zip(y_true, y_pred)
+            if t == self.positive_class and p == self.positive_class
+        )
+        fp = sum(
+            1 for t, p in zip(y_true, y_pred)
+            if t != self.positive_class and p == self.positive_class
+        )
+        denom = tp + fp
+        if denom == 0:
+            return 0.0
+        return tp / denom
 
 
 class Recall(Metric):
@@ -93,7 +107,8 @@ class Recall(Metric):
         # 힌트:
         # 1) super().__init__("Recall")
         # 2) self.positive_class = positive_class
-        raise NotImplementedError
+        super().__init__("Recall")
+        self.positive_class = positive_class
 
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
         """
@@ -106,7 +121,18 @@ class Recall(Metric):
         # 3) 분모가 0이면 0.0 반환
         # 4) TP = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
         # 5) FN = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p != self.positive_class)
-        raise NotImplementedError
+        tp = sum(
+            1 for t, p in zip(y_true, y_pred)
+            if t == self.positive_class and p == self.positive_class
+        )
+        fn = sum(
+            1 for t, p in zip(y_true, y_pred)
+            if t == self.positive_class and p != self.positive_class
+        )
+        denom = tp + fn
+        if denom == 0:
+            return 0.0
+        return tp / denom
 
 
 if __name__ == "__main__":
@@ -159,5 +185,5 @@ if __name__ == "__main__":
 
         print("All Problem 6 tests passed.")
 
-    # run_tests()
+    run_tests()
     pass
