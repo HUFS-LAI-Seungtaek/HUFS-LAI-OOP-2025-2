@@ -11,13 +11,21 @@ def clean_text(s: str) -> str:
     """
     # TODO: 구현하세요
     # 힌트:
-    # 1) s.lower() - 소문자 변환
-    # 2) re.sub(r"\s+", " ", s) - 모든 연속 공백을 단일 공백으로
-    # 3) s.strip() - 앞뒤 공백 제거
-    # 4) string.punctuation에서 특정 문자 제외하고 제거
-    # 5) set 연산을 활용해서 keep = {"'", "-"}, 나머지는 제거
-    raise NotImplementedError
+    # 1) 소문자로 변환
+    s = s.lower()
+    
+    # 2) 앞뒤 공백 제거
+    s = s.strip()
+    
+    # 3) 모든 연속 공백을 하나로
+    s = re.sub(r"\s+", " ", s)
+    
+    # 4) 아포스트로피(')와 하이픈(-)만 남기고 나머지 구두점 제거
+    keep = {"'", "-"}
+    remove_punct = "".join(ch for ch in string.punctuation if ch not in keep)
+    s = s.translate(str.maketrans("", "", remove_punct))
 
+    return s
 
 if __name__ == "__main__":
     def run_tests():
@@ -26,5 +34,5 @@ if __name__ == "__main__":
         assert clean_text("...") == ""
         assert clean_text(" A  B\tC\nD ") == "a b c d"
         print("filters.py tests passed.")
-    # run_tests()
+    run_tests()
     pass
