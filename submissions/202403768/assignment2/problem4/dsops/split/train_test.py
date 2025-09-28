@@ -16,9 +16,3 @@ def train_test_split(seq: List, test_ratio: float, seed: int | None = None) -> T
     test = data[cut_idx:]
     
     return train, test
-
-if __name__ == "__main__":
-    seq = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    train, test = train_test_split(seq, 0.3, 42)
-    print("Train:", train)
-    print("Test:", test)
