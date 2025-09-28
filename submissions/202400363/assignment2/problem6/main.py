@@ -47,9 +47,7 @@ class Accuracy(Metric):
         """
         정확도 계산: (맞은 예측 수) / (전체 예측 수)
         """
-        # TODO: 정확도를 계산하세요
-        # 힌트:
-        # 1) 빈 리스트인 경우 0.0 반환
+       
         if not y_true:
             return 0.0
         correct = sum(1 for t, p in zip(y_true, y_pred) if t == p)
@@ -62,8 +60,7 @@ class Precision(Metric):
         """
         정밀도 지표 초기화.
         """
-        # TODO: 부모 클래스 생성자 호출과 양성 클래스 저장
-        # 힌트:
+       
         super().__init__("Precision")
         self.positive_class = positive_class
         
@@ -72,18 +69,14 @@ class Precision(Metric):
         """
         정밀도 계산: TP / (TP + FP)
         """
-        # TODO: 정밀도를 계산하세요
-        # 힌트:
-        # 1) TP = 실제 양성을 양성으로 예측한 수
+       
         tp = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
-        # 2) FP = 실제 음성을 양성으로 예측한 수
+        
         fp = sum(1 for t, p in zip(y_true, y_pred) if t != self.positive_class and p == self.positive_class)
-        # 3) 분모가 0이면 0.0 반환
+        
         if (tp + fp) == 0:
             return 0.0
         return tp / (tp + fp)
-        # 4) TP = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
-        # 5) FP = sum(1 for t, p in zip(y_true, y_pred) if t != self.positive_class and p == self.positive_class)
         
 
 
@@ -93,8 +86,7 @@ class Recall(Metric):
         """
         재현율 지표 초기화.
         """
-        # TODO: 부모 클래스 생성자 호출과 양성 클래스 저장
-        # 힌트:
+       
         super().__init__("Recall")
         self.positive_class = positive_class
         
@@ -103,11 +95,7 @@ class Recall(Metric):
         """
         재현율 계산: TP / (TP + FN)
         """
-        # TODO: 재현율을 계산하세요
-        # 힌트:
-        # 1) TP = 실제 양성을 양성으로 예측한 수
-        # 2) FN = 실제 양성을 음성으로 예측한 수
-        # 3) 분모가 0이면 0.0 반환
+       
         # 4) TP = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
         tp = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
         # 5) FN = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p != self.positive_class)
