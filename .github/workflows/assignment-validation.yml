@@ -74,6 +74,9 @@ jobs:
     needs: validate-assignment-structure
     runs-on: ubuntu-latest
     if: always()
+    permissions:
+      issues: write
+      pull-requests: write
 
     steps:
     - name: Checkout code
