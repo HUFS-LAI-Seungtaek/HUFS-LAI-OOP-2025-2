@@ -13,6 +13,8 @@
 - **Problem 5**: `cachekit` — 메모리 캐시
 - **Problem 6**: `지표 계산기` — 상속과 추상화
 
+**⚠️ 중요**: 문제 spec에서 명시가 된 경우를 제외하고, 라이브러리를 사용하지 말고 직접 구현해주세요.
+
 ## 🚀 시작하기
 
 ### 1. 저장소 준비
@@ -138,16 +140,16 @@ pwd
 cd problem1 && python main.py
 
 # Problem 2 테스트
-cd problem2/textops && python main.py
+cd problem2 && python -m textops.main
 
 # Problem 3 테스트
 cd problem3 && python main.py
 
 # Problem 4 테스트
-cd problem4/dsops && python main.py
+cd problem4 && python -m dsops.main
 
 # Problem 5 테스트
-cd problem5/cachekit && python main.py
+cd problem5 && python -m cachekit.main
 
 # Problem 6 테스트
 cd problem6 && python main.py
