@@ -29,7 +29,6 @@ class Metric(ABC):
         """
         score = self.compute(y_true, y_pred)
         return f"{self.name}: {score:.3f}"
-        raise NotImplementedError
 
 
 class Accuracy(Metric):
@@ -47,7 +46,6 @@ class Accuracy(Metric):
             return 0.0
         correct = sum(1 for t, p in zip(y_true, y_pred) if t == p)
         return correct / len(y_true)
-        raise NotImplementedError
 
 
 class Precision(Metric):
@@ -67,7 +65,6 @@ class Precision(Metric):
         if TP+FP==0:
             return 0.0
         return TP/(TP+FP)
-        raise NotImplementedError
 
 
 class Recall(Metric):
@@ -87,7 +84,6 @@ class Recall(Metric):
         if TP+FN==0:
             return 0.0
         return TP / (TP + FN)
-        raise NotImplementedError
 
 
 if __name__ == "__main__":
