@@ -7,7 +7,6 @@ def word_tokens(s: str) -> list[str]:
         return []
     s=s.split(" ")
     return s
-    raise NotImplementedError
 
 
 if __name__ == "__main__":
