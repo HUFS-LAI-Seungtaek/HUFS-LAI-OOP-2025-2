@@ -33,8 +33,8 @@ class Metric(ABC):
         """
         # TODO: compute 메서드를 호출하여 지표를 계산하고 문자열로 반환하세요
         # 힌트:
-        # 1) score = self.compute(y_true, y_pred)
-        # 2) return f"{self.name}: {score:.3f}"
+        score = self.compute(y_true, y_pred)
+        return f"{self.name}: {score:.3f}"
         raise NotImplementedError
 
 
@@ -44,7 +44,7 @@ class Accuracy(Metric):
         정확도 지표 초기화.
         """
         # TODO: 부모 클래스 생성자를 호출하세요
-        # 힌트: super().__init__("Accuracy")
+        super().__init__("Accuracy")
         raise NotImplementedError
 
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
@@ -54,8 +54,10 @@ class Accuracy(Metric):
         # TODO: 정확도를 계산하세요
         # 힌트:
         # 1) 빈 리스트인 경우 0.0 반환
-        # 2) correct = sum(1 for t, p in zip(y_true, y_pred) if t == p)
-        # 3) return correct / len(y_true)
+        if not y_true:
+            return 0.0
+        correct = sum(1 for t, p in zip(y_true, y_pred) if t == p)
+        return correct / len(y_true)
         raise NotImplementedError
 
 
@@ -66,8 +68,8 @@ class Precision(Metric):
         """
         # TODO: 부모 클래스 생성자 호출과 양성 클래스 저장
         # 힌트:
-        # 1) super().__init__("Precision")
-        # 2) self.positive_class = positive_class
+        super().__init__("Precision")
+        self.positive_class = positive_class
         raise NotImplementedError
 
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
@@ -79,8 +81,12 @@ class Precision(Metric):
         # 1) TP = 실제 양성을 양성으로 예측한 수
         # 2) FP = 실제 음성을 양성으로 예측한 수
         # 3) 분모가 0이면 0.0 반환
-        # 4) TP = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
-        # 5) FP = sum(1 for t, p in zip(y_true, y_pred) if t != self.positive_class and p == self.positive_class)
+        TP = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
+        FP = sum(1 for t, p in zip(y_true, y_pred) if t != self.positive_class and p == self.positive_class)
+        a=TP+FP
+        if a==0:
+            return 0.0
+        return TP/(TP + FP)
         raise NotImplementedError
 
 
@@ -91,8 +97,8 @@ class Recall(Metric):
         """
         # TODO: 부모 클래스 생성자 호출과 양성 클래스 저장
         # 힌트:
-        # 1) super().__init__("Recall")
-        # 2) self.positive_class = positive_class
+        super().__init__("Recall")
+        self.positive_class = positive_class
         raise NotImplementedError
 
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
@@ -104,8 +110,12 @@ class Recall(Metric):
         # 1) TP = 실제 양성을 양성으로 예측한 수
         # 2) FN = 실제 양성을 음성으로 예측한 수
         # 3) 분모가 0이면 0.0 반환
-        # 4) TP = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
-        # 5) FN = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p != self.positive_class)
+        TP = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
+        FN = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p != self.positive_class)
+        b=TP+FN
+        if b==0:
+            return 0.0
+        return TP/(TP + FN)
         raise NotImplementedError
 
 
@@ -159,5 +169,5 @@ if __name__ == "__main__":
 
         print("All Problem 6 tests passed.")
 
-    # run_tests()
+    run_tests()
     pass
