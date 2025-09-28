@@ -5,7 +5,7 @@ def train_test_split(seq: List, test_ratio: float, seed: int | None = None) -> T
     """
     Splits a sequence into train and test sets.
     """
-    if not 0.0 <= test_ratio <= 1.0:
+    if not (0.0 <= test_ratio <= 1.0):
         raise ValueError("Test ratio must be between 0.0 and 1.0")
 
     data = list(seq)
