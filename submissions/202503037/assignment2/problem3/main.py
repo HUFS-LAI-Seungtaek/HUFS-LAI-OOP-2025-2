@@ -10,14 +10,12 @@ def count_tokens(tokens: list[str]) -> dict[str, int]:
     for token in tokens:
         d[token] = d.get(token, 0) + 1
     return d
-    raise NotImplementedError
 
 def top_k(freqs: dict[str, int], k: int) -> list[tuple[str, int]]:
     if k <= 0:
         return []
     a=sorted(freqs.items(),key=lambda x:(-x[1], x[0]))
     return a[:k]
-    raise NotImplementedError
 
 def merge_freqs(maps: list[dict[str, int]]) -> dict[str, int]:
     result = {}
@@ -25,7 +23,6 @@ def merge_freqs(maps: list[dict[str, int]]) -> dict[str, int]:
         for key, value in freq_dict.items():
             result[key] = result.get(key, 0) + value
     return result
-    raise NotImplementedError
 
 
 if __name__ == "__main__":
