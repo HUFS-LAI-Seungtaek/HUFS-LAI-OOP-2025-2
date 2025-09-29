@@ -1,0 +1,31 @@
+name: Auto-assign PR author and request review
+
+on:
+  pull_request_target:
+    types: [opened, reopened, ready_for_review]
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  assign-and-request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const pr = context.payload.pull_request;
+            const number = pr.number;
+            const author = pr.user.login;
+
+            // 1) PR 작성자를 Assignee로 지정
+            await github.rest.issues.addAssignees({
+              owner, repo, issue_number: number, assignees: [author]
+            });
+
+            // 2) 리포지토리 소유자(당신)를 리뷰어로 요청
+            await github.rest.pulls.requestReviewers({
+              owner, repo, pull_number: number, reviewers: ['hist0613']
+            });
