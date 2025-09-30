@@ -1,0 +1,150 @@
+name: Assignment Structure Validation
+
+on:
+  pull_request_target:
+    paths:
+      - 'submissions/**'
+    types: [opened, synchronize, reopened]
+
+permissions:
+  pull-requests: write
+  issues: write
+  contents: read
+
+jobs:
+  validate-assignment-structure:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v40
+      with:
+        files: submissions/**
+
+    - name: Validate assignment structure
+      if: steps.changed-files.outputs.any_changed == 'true'
+      run: |
+        python .github/scripts/validate_assignment.py ${{ steps.changed-files.outputs.all_changed_files }} --pr-title "${{ github.event.pull_request.title }}"
+
+    - name: Update PR description with file tree
+      if: steps.changed-files.outputs.any_changed == 'true'
+      run: |
+        python .github/scripts/update_pr_description.py ${{ steps.changed-files.outputs.all_changed_files }}
+
+    - name: Update PR description
+      if: steps.changed-files.outputs.any_changed == 'true'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const path = require('path');
+
+          try {
+            const prDescription = fs.readFileSync('pr_description.md', 'utf8');
+
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              body: prDescription
+            });
+
+            console.log('✅ PR description updated successfully');
+          } catch (error) {
+            console.log('⚠️ Could not update PR description:', error.message);
+          }
+
+    - name: Run assignment tests
+      if: steps.changed-files.outputs.any_changed == 'true'
+      run: |
+        python .github/scripts/run_assignment_tests.py ${{ steps.changed-files.outputs.all_changed_files }}
+
+  comment-on-pr:
+    needs: validate-assignment-structure
+    runs-on: ubuntu-latest
+    if: always()
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+
+    - name: Comment on PR failure
+      if: needs.validate-assignment-structure.result == 'failure'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const { owner, repo, number } = context.issue;
+          await github.rest.issues.createComment({
+            owner,
+            repo,
+            issue_number: number,
+            body: `## ❌ Assignment Structure Validation Failed
+
+            Your submission does not follow the required format. Please check:
+
+            ### Required PR Title Format:
+            \`{N}st Assignment by {student_id} (Full Name)\`
+
+            Examples:
+            - \`1st Assignment by 202500764 (Kyeongwon Noh)\`
+            - \`2nd Assignment by 202500764 (Kyeongwon Noh)\`
+
+            ### Required Directory Structure:
+            \`\`\`
+            submissions/{student_id}/assignment{N}/
+            ├── problem1/
+            ├── problem2/
+            ├── problem3/
+            ├── problem4/
+            ├── problem5/
+            └── problem6/
+            \`\`\`
+
+            ### Common Issues:
+            - **Incorrect PR title format** (must follow: "Nth Assignment by {student_id} (Full Name)")
+            - Missing required directories (problem1~6)
+            - Incorrect directory structure
+            - Missing student ID in path
+            - Invalid student ID format (must be 7-9 digits)
+
+            Please fix these issues and push again. The validation will run automatically.`
+          });
+
+    - name: Comment on PR success
+      if: needs.validate-assignment-structure.result == 'success'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const { owner, repo, number } = context.issue;
+          await github.rest.issues.createComment({
+            owner,
+            repo,
+            issue_number: number,
+            body: `## ✅ Assignment Structure Validation Passed
+
+            Great! Your submission follows the required directory structure.
+
+            ### Next Steps:
+            1. Check that all your code implements the required functionality
+            2. Test your solutions locally before final submission
+            3. Make sure everything works correctly
+
+            Good luck with your assignment! 🚀`
+          });
