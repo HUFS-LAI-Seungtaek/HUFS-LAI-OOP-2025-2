@@ -13,6 +13,8 @@
 - **Problem 5**: `cachekit` — 메모리 캐시
 - **Problem 6**: `지표 계산기` — 상속과 추상화
 
+**⚠️ 중요**: 문제 spec에서 명시가 된 경우를 제외하고, 라이브러리를 사용하지 말고 직접 구현해주세요.
+
 ## 🚀 시작하기
 
 ### 1. 저장소 준비
@@ -28,7 +30,10 @@ git clone https://github.com/YOUR_USERNAME/HUFS-LAI-OOP-2025-2.git
 cd HUFS-LAI-OOP-2025-2
 ```
 
-#### 이미 fork한 경우 (동기화)
+#### 이미 fork했고, 웹에서 sync를 하고 싶은 경우
+- https://github.com/YOUR_USERNAME/HUFS-LAI-OOP-2025-2 에 접속해서 `Sync fork` 버튼 클릭 후 `Update branch` 선택.
+
+#### 이미 fork했지만 터미널에서 작업하고 싶은 경우
 ```bash
 # 기존 로컬 저장소로 이동
 cd HUFS-LAI-OOP-2025-2
@@ -43,9 +48,22 @@ git merge upstream/main
 git push origin main
 ```
 
+- 추가 설명 (2025-09-24 업데이트): 이 때 `upstream` 은 교수 repository (https://github.com/HUFS-LAI-Seungtaek/HUFS-LAI-OOP-2025-2) 이고, `origin` 은 여러분 학생 repository (https://github.com/YOUR_USERNAME/HUFS-LAI-OOP-2025-2) 입니다.
+
 ### 2. 과제 파일 복사
 
+`assignments/` 디렉토리는 첫 화면에서 안내하듯이 과제 공지 및 템플릿 제공을 목적으로 하기 때문에, `assignments/` 에서는 코드를 수정하시면 안 됩니다.
+이번 과제 제출을 위한 모든 파일 및 변경 사항은 `submissions/` 아래에서만 이루어져야 합니다.
+아래는 명령어들은 터미널(cmd, git bash 등)을 통해 `submissions/` 아래에 `assignments/` 에서 제공하는 템플릿을 옮기는 방법입니다.
+터미널이 익숙하지 않다면 직접 윈도우 폴더를 열어서 복사 후 작업해도 상관없습니다. 
+
 ```bash
+# submissions 디렉토리 생성
+mkdir submissions
+
+# submissions 디렉토리 아래 본인 학번으로 디렉토리 생성
+mkdir submissions/YOUR_STUDENT_ID
+
 # 현재 디렉토리에서 과제 파일들을 자신의 제출 디렉토리로 복사
 cp -r assignments/assignment2 submissions/YOUR_STUDENT_ID/
 
@@ -115,20 +133,23 @@ submissions/YOUR_STUDENT_ID/assignment2/
 ### 개별 문제 테스트
 
 ```bash
+# 현재 위치 확인 (xxx/HUFS-LAI-OOP-2025-2/submissions/YOUR_STUDENT_ID/assignment2 로 표시되어야 함.)
+pwd
+
 # Problem 1 테스트
 cd problem1 && python main.py
 
 # Problem 2 테스트
-cd problem2/textops && python main.py
+cd problem2 && python -m textops.main
 
 # Problem 3 테스트
 cd problem3 && python main.py
 
 # Problem 4 테스트
-cd problem4/dsops && python main.py
+cd problem4 && python -m dsops.main
 
 # Problem 5 테스트
-cd problem5/cachekit && python main.py
+cd problem5 && python -m cachekit.main
 
 # Problem 6 테스트
 cd problem6 && python main.py
