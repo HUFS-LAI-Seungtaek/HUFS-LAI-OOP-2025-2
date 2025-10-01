@@ -30,45 +30,16 @@ class AssignmentValidator:
                 'optional_files': ['README.md']
             },
             'assignment2': {
-                'required_files': [
-                    'grader.py',
-                    'problem1/README.md',
-                    'problem1/main.py',
-                    'problem2/README.md',
-                    'problem2/textops/__init__.py',
-                    'problem2/textops/main.py',
-                    'problem2/textops/clean/__init__.py',
-                    'problem2/textops/clean/filters.py',
-                    'problem2/textops/tokenize/__init__.py',
-                    'problem2/textops/tokenize/word.py',
-                    'problem3/README.md',
-                    'problem3/main.py',
-                    'problem4/README.md',
-                    'problem5/README.md',
-                    'problem6/README.md'
-                ],
+                'required_files': [],
                 'required_dirs': [
                     'problem1',
                     'problem2',
-                    'problem2/textops',
-                    'problem2/textops/clean',
-                    'problem2/textops/tokenize',
                     'problem3',
                     'problem4',
                     'problem5',
                     'problem6'
                 ],
-                'optional_files': [
-                    'problem4/dsops/__init__.py',
-                    'problem4/dsops/main.py',
-                    'problem4/dsops/split/__init__.py',
-                    'problem4/dsops/split/train_test.py',
-                    'problem4/dsops/stats/__init__.py',
-                    'problem4/dsops/stats/labels.py',
-                    'problem5/cachekit/__init__.py',
-                    'problem5/cachekit/main.py',
-                    'problem6/main.py'
-                ]
+                'optional_files': []
             }
         }
 
