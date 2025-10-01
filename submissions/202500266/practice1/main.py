@@ -24,7 +24,7 @@ class Country:
                 self.bronze + other.bronze,
             )
         
-        return NotImplemented
+        
 
     # Comparison overriding → 금 > 은 > 동 순서로 비교
     def __lt__(self, other: "Country") -> bool:
@@ -32,7 +32,7 @@ class Country:
         
         if isinstance(other, Country):
             return (self.gold, self.silver, self.bronze) < (other.gold, other.silver, other.bronze)
-        return NotImplemented
+        
 
     def __eq__(self, other: object) -> bool:
         self.gold == other.gold and \
