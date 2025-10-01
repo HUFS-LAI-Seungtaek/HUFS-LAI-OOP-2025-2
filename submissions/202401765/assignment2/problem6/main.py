@@ -52,6 +52,8 @@ class Recall(Metric):
             return 0.0
         return tp / denominator
 
+#metric 작동 검증 코드 제미나이 도움 받음
+
 if __name__ == "__main__":
     def run_tests():
         # Test data
