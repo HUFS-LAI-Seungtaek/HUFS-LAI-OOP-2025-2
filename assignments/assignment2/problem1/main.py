@@ -12,8 +12,7 @@ class Accumulator:
         """
         # TODO: 시작값을 인스턴스 변수에 저장하세요
         # 힌트: self._total = start (private 변수 사용)
-        self._total = start
-
+        raise NotImplementedError
 
     @property
     def total(self) -> float:
@@ -22,9 +21,8 @@ class Accumulator:
         """
         # TODO: 내부 total 값을 반환하세요
         # 힌트: return self._total
-    
-        return self._total
-    
+        raise NotImplementedError
+
     @total.setter
     def total(self, value: float) -> None:
         """
@@ -32,7 +30,7 @@ class Accumulator:
         """
         # TODO: 직접 할당을 막기 위해 예외를 발생시키세요
         # 힌트: raise AssertionError("적절한 에러 메시지")
-        raise AssertionError("error")
+        raise NotImplementedError
 
     def add(self, x: float) -> float:
         """
@@ -40,9 +38,7 @@ class Accumulator:
         """
         # TODO: 내부 상태를 업데이트하고 새 합계를 반환하세요
         # 힌트: self._total += x, 그리고 return self._total
-       
-        self._total += x
-        return self._total
+        raise NotImplementedError
 
     def reset(self) -> None:
         """
@@ -50,8 +46,7 @@ class Accumulator:
         """
         # TODO: 내부 total을 0.0으로 리셋하세요
         # 힌트: self._total = 0.0
-        
-        self._total = 0.0   
+        raise NotImplementedError
 
 
 if __name__ == "__main__":
@@ -80,5 +75,5 @@ if __name__ == "__main__":
 
         print("All Problem 1 tests passed.")
 
-    run_tests()
+    # run_tests()
     pass
