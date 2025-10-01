@@ -1,10 +1,15 @@
 name: Assignment Structure Validation
 
 on:
-  pull_request:
+  pull_request_target:
     paths:
       - 'submissions/**'
     types: [opened, synchronize, reopened]
+
+permissions:
+  pull-requests: write
+  issues: write
+  contents: read
 
 jobs:
   validate-assignment-structure:
@@ -14,6 +19,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
+        ref: ${{ github.event.pull_request.head.sha }}
         fetch-depth: 0
 
     - name: Set up Python
@@ -69,12 +75,17 @@ jobs:
     needs: validate-assignment-structure
     runs-on: ubuntu-latest
     if: always()
+    permissions:
+      issues: write
+      pull-requests: write
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
 
-    - name: Comment on PR
+    - name: Comment on PR failure
       if: needs.validate-assignment-structure.result == 'failure'
       uses: actions/github-script@v7
       with:
@@ -99,53 +110,24 @@ jobs:
             \`\`\`
             submissions/{student_id}/assignment{N}/
             ├── problem1/
-            │   ├── README.md
-            │   └── main.py
             ├── problem2/
-            │   ├── README.md
-            │   └── textops/
-            │       ├── __init__.py
-            │       ├── main.py
-            │       ├── clean/
-            │       │   ├── __init__.py
-            │       │   └── filters.py
-            │       └── tokenize/
-            │           ├── __init__.py
-            │           └── word.py
             ├── problem3/
-            │   ├── README.md
-            │   └── main.py
             ├── problem4/
-            │   ├── README.md
-            │   └── dsops/
-            │       ├── __init__.py
-            │       ├── main.py
-            │       ├── split/
-            │       │   ├── __init__.py
-            │       │   └── train_test.py
-            │       └── stats/
-            │           ├── __init__.py
-            │           └── labels.py
             ├── problem5/
-            │   ├── README.md
-            │   └── cachekit/
-            │       ├── __init__.py
-            │       └── main.py
-            └── grader.py
+            └── problem6/
             \`\`\`
 
             ### Common Issues:
             - **Incorrect PR title format** (must follow: "Nth Assignment by {student_id} (Full Name)")
-            - Missing required files
+            - Missing required directories (problem1~6)
             - Incorrect directory structure
-            - Files in wrong locations
             - Missing student ID in path
             - Invalid student ID format (must be 7-9 digits)
 
             Please fix these issues and push again. The validation will run automatically.`
           });
 
-    - name: Comment on success
+    - name: Comment on PR success
       if: needs.validate-assignment-structure.result == 'success'
       uses: actions/github-script@v7
       with:
@@ -161,8 +143,8 @@ jobs:
 
             ### Next Steps:
             1. Check that all your code implements the required functionality
-            2. Run \`python grader.py\` locally to test your solutions
-            3. Make sure all tests pass before final submission
+            2. Test your solutions locally before final submission
+            3. Make sure everything works correctly
 
             Good luck with your assignment! 🚀`
           });
