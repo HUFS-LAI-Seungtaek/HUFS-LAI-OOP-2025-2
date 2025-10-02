@@ -28,7 +28,7 @@ def top_k(freqs: dict[str, int], k: int) -> list[tuple[str, int]]:
 입력은 dict 고 반환은 list 라는 걸 처음에 모르고 돌렸다가 오류나서 다시보니 일단 타입을 바꿔야 하는구나를 알았고
 dict 를 list로 변환하는 방법은 https://codechacha.com/ko/python-convert-dict-to-list/ 에서 배웠습니다.
 sorted()와 key 매개변수에 대해서 강의자료를 참조했지만 고려 기준을 여러개 적는 방법이 따로 안 나와 있어서
-여러개의 경우 어떻게 하는지 제미나이한테 물어봤습니다. 보기 쉽게 적는 방법도 제미나이의 예시를 참고했습니다.
+여러개의 경우 어떻게 하는지 제미나이한테 물어봤습니다.
 '''
 
 def merge_freqs(maps: list[dict[str, int]]) -> dict[str, int]:
