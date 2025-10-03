@@ -1,4 +1,5 @@
 import time
+from tqdm import tqdm
 
 class Country:
     def __init__(self, name: str, gold=0, silver=0, bronze=0):
@@ -12,13 +13,32 @@ class Country:
 
     # Arithmetic overriding → 메달 합산
     def __add__(self, other):
-        pass
+        n_gold = self.gold + other.gold
+        n_silver = self.silver + other.silver
+        n_bronze = self.bronze + other.bronze
+        return Country(self.name, new_gold, new_silver, new_bronze)
+        
+    
 
     # Comparison overriding → 금 > 은 > 동 순서로 비교
     def __lt__(self, other: "Country") -> bool:
-        pass
+        if self.gold != other.gold:
+            return self.gold < other.gold
+        if self.silver != other.silver:
+            return self.silver < other.silver
+            
+        return self.bronze < other.bronze
+
 
     def __eq__(self, other: object) -> bool:
+        if not isinstance (other, country): [cite: 131]
+            return False 
+    
+        return (
+            self.name == other.name
+            and self.gold ==other.gold
+            and self.silver == other.silver
+            and self.bronze == other.bronze) 
         pass 
 
 
@@ -36,6 +56,11 @@ if __name__ == "__main__":
         ("CHN", "bronze"),
     ]
 
+    for country, medal in tqdm(events, desc="Processing events"): [cite: 236]
+  
+
+
+    
     countries = {}
 
     # TODO: tqdm으로 집계 진행
