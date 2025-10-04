@@ -1,6 +1,4 @@
 import time
-#from tqdm import tqdm
-
 class Country:
     def __init__(self, name: str, gold=0, silver=0, bronze=0):
         self.name = name
@@ -50,7 +48,6 @@ if __name__ == "__main__":
 
     countries = {}
 
-    # TODO: tqdm으로 집계 진행
     from tqdm import tqdm
     for country, medal in tqdm(events,desc="Processing events"):
         time.sleep(0.1)  # 진행바 확인용 딜레이
