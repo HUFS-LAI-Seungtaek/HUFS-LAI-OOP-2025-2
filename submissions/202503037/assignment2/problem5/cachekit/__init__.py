@@ -1,4 +1,4 @@
-class cache:
+class Cache:
     def __init__(self):
         self._data = {}
     def put(self, key, value):
