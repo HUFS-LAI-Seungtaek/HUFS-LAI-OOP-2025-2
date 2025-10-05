@@ -7,7 +7,8 @@ def clean_text(s: str) -> str:
     s = s.strip()
     keep = {"'", "-"}
     punc = set(string.punctuation) - keep
-    s = s.translate(str.maketrans("","", "".join(punc)))
+    s = s.translate(str.maketrans("","", "".join(punc))) # gpt 도움을 받음 
+    # .join -> set을 다시 문자열, maketrans(바뀔문자,바꿀문자,삭제할문자)
     return s
 
 
