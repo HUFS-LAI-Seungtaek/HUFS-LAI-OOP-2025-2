@@ -25,3 +25,5 @@ if __name__ == "__main__":
     print("Top 2:", top_k(count_tokens(tokens), 2))
     merged = merge_freqs([{"a":1}, {"a":2,"b":1}])
     print("Merged freqs:", merged)
+#credit:구현과정에서 count_tokens에서 dict.get(key, 0)로 빈도를 누적,
+top_k에서 빈도 내림차순 및 동률 토큰 오름차순 정렬을 설계하는것을 도움받았습니다.
