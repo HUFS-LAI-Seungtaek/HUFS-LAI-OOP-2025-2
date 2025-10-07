@@ -1,4 +1,3 @@
-# main.py
 """
 Problem 6 — 지표 계산기 (상속과 추상화)
 - ML 성능 지표를 계산하는 추상 클래스와 구체 클래스들 구현
@@ -30,7 +29,6 @@ class Metric(ABC):
         score = self.compute(y_true, y_pred)
         return f"{self.name}: {score:.3f}"
 
-
 class Accuracy(Metric):
     def __init__(self) -> None:
         """
@@ -42,9 +40,10 @@ class Accuracy(Metric):
         """
         정확도 계산: (맞은 예측 수) / (전체 예측 수)
         """
-        if not y_true:
+        if y_true == []:
             return 0.0
-        correct = sum(1 for t, p in zip(y_true, y_pred) if t == p)
+        else:
+            correct = sum(1 for t, p in zip(y_true, y_pred) if t == p)
         return correct / len(y_true)
 
 
