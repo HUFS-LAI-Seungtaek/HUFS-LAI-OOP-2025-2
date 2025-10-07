@@ -7,6 +7,8 @@ def count_tokens(tokens: List[str]) -> Dict[str, int]:
     """
     return collections.Counter(tokens)
 
+# 토큰 추출하는 코드 제미나이 도움 받음
+
 def top_k(freqs: Dict[str, int], k: int) -> List[Tuple[str, int]]:
     """
     Get top-k most frequent tokens.
@@ -21,6 +23,8 @@ def top_k(freqs: Dict[str, int], k: int) -> List[Tuple[str, int]]:
     
     return sorted_items[:k]
 
+# 딕셔너리 병합하는 코드 제미나이 도움 받음
+
 def merge_freqs(maps: List[Dict[str, int]]) -> Dict[str, int]:
     """
     Merge multiple frequency dictionaries.
@@ -31,7 +35,7 @@ def merge_freqs(maps: List[Dict[str, int]]) -> Dict[str, int]:
             result[key] += value
     return dict(result)
 
-#
+# 과제코드 증명하는 부분 제미나이 도움 받음
 
 if __name__ == "__main__":
     def run_tests():
