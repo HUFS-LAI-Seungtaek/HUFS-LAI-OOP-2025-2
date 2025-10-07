@@ -17,10 +17,11 @@ class Accumulator:
     @property
     def total(self) -> float:
         """
+
         Read-only view of the current accumulated value.
         """
         # TODO: 내부 total 값을 반환하세요
-        # 힌트: return self._total
+        
         return float(self._total)
 
     @total.setter
