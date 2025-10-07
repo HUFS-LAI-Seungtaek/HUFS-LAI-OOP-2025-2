@@ -5,7 +5,7 @@ def clean_text(s: str) -> str:
     s = re.sub(r'\s+', ' ', s)
     s = re.sub(r"[!\"#$%&()*+,./:;<=>?@[\\]^_`{|}~]", "", s)
     return s
-'''string.punctuation 사용
+'''string.punctuation을 사용해 보았습니다.
 import re
 import string
 
