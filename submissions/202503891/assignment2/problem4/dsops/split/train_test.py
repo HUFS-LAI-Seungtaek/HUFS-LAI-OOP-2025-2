@@ -14,3 +14,6 @@ def train_test_split(seq: List, test_ratio: float, seed: Optional[int] = None) -
     train = copy_seq[:cut]
     test = copy_seq[cut:]
     return train, test
+
+#credit:train_test_split 함수를 구현하면서, 리스트를 재현 가능한 방식으로 섞어
+train/test로 나누는 방법에 대해 gpt에게 도움을 받았습니다.
