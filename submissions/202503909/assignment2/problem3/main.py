@@ -11,7 +11,7 @@ def count_tokens(tokens: list[str]) -> dict[str, int]:
     # 1) 빈 딕셔너리 생성: d = {}
     # 2) 각 토큰을 순회하면서 카운트: d[token] = d.get(token, 0) + 1
     # 3) 또는 collections.Counter 사용 가능 (하지만 직접 구현도 간단함)
-    d: dict[str, int] = {}
+    d = {}
     for token in tokens:
         d[token] = d.get(token, 0) + 1
     return d
@@ -30,7 +30,7 @@ def top_k(freqs: dict[str, int], k: int) -> list[tuple[str, int]]:
 
 
 def merge_freqs(maps: list[dict[str, int]]) -> dict[str, int]:
-    result: dict[str, int] = {}
+    result = {}
     for freq_dict in maps:
         for key, value in freq_dict.items():
             result[key] = result.get(key, 0) + value

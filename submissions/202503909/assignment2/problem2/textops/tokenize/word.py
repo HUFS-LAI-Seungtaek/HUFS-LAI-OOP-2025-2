@@ -8,7 +8,13 @@ def word_tokens(s: str) -> list[str]:
     # 1) 빈 문자열이나 공백만 있는 경우 체크: if not s or s.strip() == ""
     # 2) 단일 공백으로 분할: s.split(" ")
     # 3) 빈 리스트 반환 조건 잊지 말기
-    raise NotImplementedError
+    if s==" " or not s:
+        return []
+    s=s.strip()
+    s = s.split(" ") #리스트를 어떻게 만들지 하다가 split이 리스트로 반환한다는걸 검색해서 알게됨
+    return s 
+
+
 
 
 if __name__ == "__main__":
@@ -18,5 +24,4 @@ if __name__ == "__main__":
         assert word_tokens(" ") == []
         assert word_tokens("single") == ["single"]
         print("word.py tests passed.")
-    # run_tests()
-    pass
+    run_tests()

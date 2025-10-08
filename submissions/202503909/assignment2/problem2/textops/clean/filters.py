@@ -14,7 +14,8 @@ def clean_text(s: str) -> str:
     s = s.strip()
     keep = {"'", "-"}
     remove_str = set(string.punctuation) - keep
-    s = "".join(ch for ch in s if ch not in remove_str)
+    s = "".join(ch for ch in s if ch not in remove_str) #윗줄까지 쓰고 실행이 안되어 지피티에게 물어본 문장
+    # == for ch in s: if ch not in remove_str: 문자열에 추가 -> 그걸 가지고 문장다시 구성(=.join)
     return s
 
 
