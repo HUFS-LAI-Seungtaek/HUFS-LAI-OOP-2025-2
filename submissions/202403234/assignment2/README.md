@@ -1,5 +1,10 @@
 # Assignment 2 — 객체지향 프로그래밍 심화
 
+#word_tokens() 함수: 빈 문자열·공백 문자열 예외 처리(if not s or s.strip() == "")랑단일 공백 기준 분할(s.split(" ")) 로직 구조 참고
+#top_k() 함수: 정렬 기준 설정(sorted(~, key=lambda x: (-x[1], x[0])))과 k <= 0 예외 처리 방식 참고
+#merge_freqs() 함수:중첩 루프이용한 병합(for token, count in ~)과 result.get(token, 0) + count 누적 구조 등 참고
+
+
 ## 📋 과제 개요
 
 이 과제는 6개의 문제로 구성되어 있으며, 각 문제는 파이썬의 객체지향 프로그래밍 핵심 개념을 다룹니다.
