@@ -10,7 +10,6 @@ class Accumulator:
         """
         Initialize the accumulator with a starting value.
         """
-        # TODO: 시작값을 인스턴스 변수에 저장하세요
         self._total = start
 
 
@@ -19,7 +18,6 @@ class Accumulator:
         """
         Read-only view of the current accumulated value.
         """
-        # TODO: 내부 total 값을 반환하세요
         return self._total
 
 
@@ -28,14 +26,12 @@ class Accumulator:
         """
         Educational guard: prevent direct assignment.
         """
-        # TODO: 직접 할당을 막기 위해 예외를 발생시키세요
-        raise AssertionError("적절한 에러 메시지")
+        raise AssertionError("Direct assignment to 'total' is not allowed")
 
     def add(self, x: float) -> float:
         """
         Add x to the accumulator and return the new total.
         """
-        # TODO: 내부 상태를 업데이트하고 새 합계를 반환하세요
         self._total += x
         return self._total
  
@@ -43,7 +39,6 @@ class Accumulator:
         """
         Reset the accumulator to 0.0.
         """
-        # TODO: 내부 total을 0.0으로 리셋하세요
         self._total = 0.0
 
 
