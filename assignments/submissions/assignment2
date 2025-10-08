@@ -1,0 +1,41 @@
+
+```
+submissions/YOUR_STUDENT_ID/assignment2/
+├── problem1/
+│   ├── README.md
+│   └── main.py
+├── problem2/
+│   ├── README.md
+│   └── textops/
+│       ├── __init__.py
+│       ├── main.py
+│       ├── clean/
+│       │   ├── __init__.py
+│       │   └── filters.py
+│       └── tokenize/
+│           ├── __init__.py
+│           └── word.py
+├── problem3/
+│   ├── README.md
+│   └── main.py
+├── problem4/
+│   ├── README.md
+│   └── dsops/
+│       ├── __init__.py
+│       ├── main.py
+│       ├── split/
+│       │   ├── __init__.py
+│       │   └── train_test.py
+│       └── stats/
+│           ├── __init__.py
+│           └── labels.py
+├── problem5/
+│   ├── README.md
+│   └── cachekit/
+│       ├── __init__.py
+│       └── main.py
+├── problem6/
+│   ├── README.md
+│   └── main.py
+└── grader.py
+```
