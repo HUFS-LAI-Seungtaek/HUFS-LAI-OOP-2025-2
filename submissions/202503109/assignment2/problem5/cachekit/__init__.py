@@ -31,3 +31,5 @@ class Cache:
         self._store.clear()
 
 __all__ = ["Cache", "print_version_info", "VERSION"]
+
+# 캐시구조를 배우기위해 AI 주석 남겨둠
