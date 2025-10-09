@@ -1,6 +1,7 @@
 import random
 from typing import Tuple, List, Any
 
+#학습을 위해 AI 사용 후 주석을 남겨둠
 def train_test_split(seq: list, test_ratio: float, seed: int | None = None) -> tuple[list, list]:
     """
     Split a list into train/test by test_ratio.
