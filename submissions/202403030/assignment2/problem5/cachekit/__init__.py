@@ -1,3 +1,16 @@
+'''## Required API
+루트 제공:
+- `VERSION: str` (예: "1.0")
+- `print_version_info() -> None` (간단 출력)
+- `class Cache`:
+  - `__init__(self) -> None` — 내부 dict 초기화
+  - `put(self, key, value) -> None`
+  - `get(self, key, default=None)`
+  - `__len__(self) -> int`
+  - `clear(self) -> None`
+- `__all__ = ["Cache", "print_version_info", "VERSION"]`
+'''
+
 VERSION = "1.0"
 
 def print_version_info() -> None:
