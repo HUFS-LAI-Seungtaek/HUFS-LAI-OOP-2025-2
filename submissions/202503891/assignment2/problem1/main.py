@@ -42,7 +42,9 @@ if __name__ == "__main__":
         print("All Problem 1 tests passed.")
 
     run_tests()
- #credit:@property와 @setter를 활용하여 속성을 읽기 전용으로 만드는 방법,  
+
+ '''credit:@property와 @setter를 활용하여 속성을 읽기 전용으로 만드는 방법,  
 직접 할당을 막는 예외 처리 방식,  
 그리고 `assert` 문을 사용한 테스트 코드 작성 방식에 대해  
-chat gpt로부터 개념적 설명과 코드 동작 원리에 대한 조언을 참고하였습니다.  
+chat gpt로부터 개념적 설명과 코드 동작 원리에 대한 조언을 참고하였습니다.'''
+
