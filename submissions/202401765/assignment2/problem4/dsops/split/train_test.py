@@ -1,6 +1,8 @@
 import random
 from typing import List, Tuple
 
+
+# train_test_split 함수 코드 제미나이 도움 받음
 def train_test_split(seq: List, test_ratio: float, seed: int | None = None) -> Tuple[List, List]:
     """
     Splits a sequence into train and test sets.
@@ -9,7 +11,9 @@ def train_test_split(seq: List, test_ratio: float, seed: int | None = None) -> T
         raise ValueError("Test ratio must be between 0.0 and 1.0")
 
     data = list(seq)
-    
+
+
+    # 시드 설정부분 제미나이 도움받음
     if seed is not None:
         random.seed(seed)
     
@@ -20,6 +24,8 @@ def train_test_split(seq: List, test_ratio: float, seed: int | None = None) -> T
     
     return data[:train_size], data[train_size:]
 
+
+# 테스트 코드 제미나이 도움 받음
 if __name__ == "__main__":
     def run_tests():
         # Example from README
