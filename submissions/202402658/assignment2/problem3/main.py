@@ -11,7 +11,13 @@ def count_tokens(tokens: list[str]) -> dict[str, int]:
     # 1) 빈 딕셔너리 생성: d = {}
     # 2) 각 토큰을 순회하면서 카운트: d[token] = d.get(token, 0) + 1
     # 3) 또는 collections.Counter 사용 가능 (하지만 직접 구현도 간단함)
-    raise NotImplementedError
+    d = {}
+
+    for token in tokens:
+        d[token] = d.get(token,0) + 1 #등록되지 않은 토큰에 대해서는 default:0 
+    
+    return d
+
 
 def top_k(freqs: dict[str, int], k: int) -> list[tuple[str, int]]:
     # TODO: 구현하세요
@@ -20,7 +26,15 @@ def top_k(freqs: dict[str, int], k: int) -> list[tuple[str, int]]:
     # 2) sorted() 함수의 key 매개변수 활용
     # 3) 정렬 기준: (-frequency, token) -> 빈도 내림차순, 토큰 오름차순
     # 4) 슬라이싱으로 상위 k개만: [:k]
-    raise NotImplementedError
+    #(key,value)순서쌍 뽑아내어 value(item[1]) 기준으로 내림차순. value 동등시 token이름(item[0]) 오름차순 
+    #credit:ChatGPT, sorted() 함수의 작동 구조와 구성 - dictionary의 sorted()함수활용법. lambda 함수 강의.
+    if k <=0:
+        return []
+    else:
+        sorted_freq = sorted(freqs.items() , key = lambda x: (-x[1], x[0])) 
+        top_k_tokens = sorted_freq[:k]
+        return top_k_tokens
+    
 
 def merge_freqs(maps: list[dict[str, int]]) -> dict[str, int]:
     # TODO: 구현하세요 (선택사항)
@@ -28,7 +42,15 @@ def merge_freqs(maps: list[dict[str, int]]) -> dict[str, int]:
     # 1) 결과 딕셔너리 생성: result = {}
     # 2) 각 딕셔너리를 순회: for freq_dict in maps
     # 3) 각 키-값을 누적: result[key] = result.get(key, 0) + value
-    raise NotImplementedError
+    result = {}
+    for freq_dict in maps:
+        for key, value in freq_dict.items():
+            result[key] = result.get(key, 0 ) + value
+    return result
+        
+        
+        
+    
 
 
 if __name__ == "__main__":
@@ -40,5 +62,5 @@ if __name__ == "__main__":
         print(top_k(f, 2))               # [('hello',2),('ai',1)] or [('hello',2),('world',1)] (tie by token asc)
         g = merge_freqs([{"x":1},{"x":2,"y":3}])
         print(g)                         # {'x':3,'y':3}
-    # run_demo()
-    pass
+    
+    run_demo()
