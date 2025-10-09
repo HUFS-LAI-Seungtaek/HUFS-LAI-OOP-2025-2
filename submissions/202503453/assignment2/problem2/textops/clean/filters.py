@@ -11,13 +11,13 @@ import string
     # 5) set 연산을 활용해서 keep = {"'", "-"}, 나머지는 제거
     
 def clean_text(s: str) -> str:
-    s = s.lower() 
-    s = re.sub(r"\s+", " ", s)
-    s = s.strip()
-    keep = {"'", "-"}
-    remove = set(string.punctuation) - keep
-    removing = f"[{re.escape(''.join(remove))}]"
-    s = re.sub(removing, "", s)
+    s = s.lower()                 
+    s = re.sub(r"\s+", " ", s)    
+    s = s.strip()              
+    keep = ["'", "-"]            
+    for ch in string.punctuation: 
+        if ch not in keep:        
+            s = s.replace(ch, "") 
 
     return s
 
