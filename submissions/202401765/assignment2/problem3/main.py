@@ -35,13 +35,15 @@ def merge_freqs(maps: List[Dict[str, int]]) -> Dict[str, int]:
             result[key] += value
     return dict(result)
 
-# 과제코드 증명하는 부분 제미나이 도움 받음
 
 if __name__ == "__main__":
     def run_tests():
         # count_tokens test
         assert count_tokens(["a","b","a"]) == {"a":2,"b":1}
 
+
+        # top_k 함수 조건 처리부분 제미나이 도움 받음
+        
         # top_k test
         assert top_k({"a":2,"b":2,"c":1}, 2) == [("a",2),("b",2)]
         assert top_k({"a":2, "b":1, "c":3}, 2) == [("c",3), ("a",2)]
