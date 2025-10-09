@@ -59,4 +59,5 @@ if __name__ == "__main__":
     for metric in metrics:
         print(metric.evaluate(y_true, y_pred))
 
-#credit:Accuracy, Precision, Recall 클래스 구현 시 클래스 설계 일부에 대해 gpt에게 도움을 받았습니다.
+'''credit:Accuracy, Precision, Recall 클래스를 구현할 때 상속 구조와 추상 클래스 사용 방식에 대해
+ChatGPT의 설명을 참고하였습니다.'''
