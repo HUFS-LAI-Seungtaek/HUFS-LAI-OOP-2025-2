@@ -17,6 +17,7 @@ class Accumulator:
     def total(self) -> float:
         """
         Read-only view of the current accumulated value.
+        credit: https://blockdmask.tistory.com/536
         """
         # TODO: 내부 total 값을 반환하세요
         # 힌트: return self._total
@@ -31,7 +32,7 @@ class Accumulator:
         """
         # TODO: 직접 할당을 막기 위해 예외를 발생시키세요
         # 힌트: raise AssertionError("적절한 에러 메시지")
-        raise AssertionError("total() is read-only. Use add() instead.")
+        raise AssertionError("total() is read-only.")
 
     def add(self, x: float) -> float:
         """
