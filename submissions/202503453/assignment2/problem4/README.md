@@ -3,7 +3,7 @@
 **주의: 이 문제는 템플릿 없이 README만 제공됩니다. 학생이 처음부터 파일/폴더를 직접 생성하세요.**
 
 ## Files (권장 구조)
-```
+'''
 dsops/
   __init__.py          # 루트 API 재노출 + __all__
   main.py              # 데모 실행
@@ -13,7 +13,7 @@ dsops/
   stats/
     __init__.py
     labels.py          # label_distribution(labels)
-```
+'''
 
 ## Goal
 리스트만 다루는 토이 버전으로 ML 데이터 유틸 구현:
