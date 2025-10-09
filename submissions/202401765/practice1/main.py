@@ -10,7 +10,6 @@ class Country:
     def __repr__(self):
         return f"Country('{self.name}', {self.gold}, {self.silver}, {self.bronze})"
     
-    # Task 1: __add__ 구현
     def __add__(self, other):
         if self.name != other.name:
             pass 
@@ -20,7 +19,6 @@ class Country:
         new_bronze = self.bronze + other.bronze
         return Country(self.name, new_gold, new_silver, new_bronze)
 
-    # Task 2: __lt__ (Less Than, 작다) 구현 - 정렬 기준 (금 > 은 > 동 순서)
     def __lt__(self, other):
         if self.gold != other.gold:
             return self.gold < other.gold 
@@ -33,15 +31,13 @@ class Country:
             
         return False
 
-    # Task 3: __eq__ (Equal, 같다) 구현
+    
     def __eq__(self, other):
         return (self.gold == other.gold and
                 self.silver == other.silver and
                 self.bronze == other.bronze)
 
-# --- 메인 실행 함수 ---
 def run_leaderboard_practice():
-    # 과제 예시 결과를 재현하는 이벤트 리스트 (USA: G2 S0 B1, KOR: G1 S1 B0 등)
     events = [
         ("USA", "G"), ("USA", "G"), ("USA", "B"), # USA: G2 B1
         ("KOR", "G"), ("KOR", "S"), # KOR: G1 S1
@@ -51,7 +47,7 @@ def run_leaderboard_practice():
 
     leaderboard = {}
 
-    # Task 4: tqdm을 사용한 진행률 추적 및 메달 업데이트
+    # tqdm을 사용한 메달수 업데이트 부분 제미나이 도움 받음
     for country_name, medal_type in tqdm(events, desc="Processing events"):
         if country_name not in leaderboard:
             leaderboard[country_name] = Country(country_name, 0, 0, 0)
