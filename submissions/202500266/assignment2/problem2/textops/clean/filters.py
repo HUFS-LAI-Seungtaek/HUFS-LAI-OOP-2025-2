@@ -13,7 +13,7 @@ def clean_text(s: str) -> str:
     s = re.sub(r"\s+", " ", s).strip()
     keep = {"'", "-"}
     remove = "".join(ch for ch in string.punctuation if ch not in keep)
-    s = s.translate(str.maketrans("", "", remove))
+    s = s.translate(str.maketrans("", "", remove)) #Gemini의 도움을 받았습니다
     return s
 
 

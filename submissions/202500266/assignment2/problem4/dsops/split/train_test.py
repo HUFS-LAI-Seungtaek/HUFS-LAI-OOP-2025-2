@@ -12,7 +12,7 @@ def train_test_split(seq: List, test_ratio: float, seed: Optional[int] = None) -
         random.seed(seed)
     random.shuffle(seq_copy)
 
-    cut = int(round(len(seq) * (1 - test_ratio)))
+    cut = int(round(len(seq) * (1 - test_ratio))) # Gemini의 도움을 받았습니다
     train = seq_copy[:cut]
     test = seq_copy[cut:]
     return train, test

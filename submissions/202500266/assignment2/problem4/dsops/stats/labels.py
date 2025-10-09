@@ -3,7 +3,13 @@ from collections import Counter
 
 def label_distribution(labels: List[str]) -> Dict[str, int]:
     
-    return dict(Counter(labels))
+    result = {}
+    for label in labels:
+        if label in result:
+            result[label] += 1
+        else:
+            result[label] = 1
+    return result
 
 
 if __name__ == "__main__":
