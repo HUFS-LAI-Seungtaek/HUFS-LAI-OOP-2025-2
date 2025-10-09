@@ -21,5 +21,6 @@ class Cache:
 
 __all__ = ["Cache", "print_version_info", "VERSION"]
 
-#credit:Cache 클래스를 구현할 때, 내부 dict를 래핑하여 put/get/clear/__len__의 기능을 
+'''credit:Cache 클래스를 구현할 때, 내부 dict를 래핑하여 put/get/clear/__len__의 기능을 
 설계하는 방법을 gpt를 참고하였습니다.
+'''
