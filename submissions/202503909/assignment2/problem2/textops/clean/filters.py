@@ -36,4 +36,3 @@ if __name__ == "__main__":
         assert clean_text(" A  B\tC\nD ") == "a b c d"
         print("filters.py tests passed.")
     run_tests()
-    pass
