@@ -1,6 +1,6 @@
 # Demo for textops package
 if __name__ == "__main__":
-    from textops import clean_text, word_tokens
+    from . import clean_text, word_tokens
 
     s = " \tHello,\nWORLD!!!  "
     cleaned = clean_text(s)           # "hello world"
