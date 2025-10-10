@@ -1,42 +1,62 @@
-# problem1/main.py (최종 버전)
+# problem1.py
+"""
+Problem 1 — Accumulator (stateful counter for AI pipelines)
+- Track a running sum without global variables.
+- Educate: @property (read-only) + guarded setter that blocks misuse.
+"""
 
 class Accumulator:
     def __init__(self, start: float = 0.0) -> None:
         """
         Initialize the accumulator with a starting value.
         """
-        self._total = start
+        # TODO: 시작값을 인스턴스 변수에 저장하세요
+        self._total=float(start)
+        # 힌트: self._total = start (private 변수 사용)
+
 
     @property
     def total(self) -> float:
         """
         Read-only view of the current accumulated value.
         """
+        # TODO: 내부 total 값을 반환하세요
         return self._total
+        # 힌트: return self._total
+
 
     @total.setter
     def total(self, value: float) -> None:
         """
         Educational guard: prevent direct assignment.
         """
-        # 직접 할당을 막기 위해 예외 발생
+        # TODO: 직접 할당을 막기 위해 예외를 발생시키세요
+        # 힌트: raise AssertionError("적절한 에러 메시지")
         raise AssertionError("Cannot assign to 'total'. Use add() or reset().")
+
 
     def add(self, x: float) -> float:
         """
         Add x to the accumulator and return the new total.
         """
-        self._total += x
+        # TODO: 내부 상태를 업데이트하고 새 합계를 반환하세요
+        # 힌트: self._total += x, 그리고 return self._total
+        self._total+=x
         return self._total
+
 
     def reset(self) -> None:
         """
         Reset the accumulator to 0.0.
         """
-        self._total = 0.0
+        # TODO: 내부 total을 0.0으로 리셋하세요
+        # 힌트: self._total = 0.0
+        self._total=0.0
+
 
 
 if __name__ == "__main__":
+
     def run_tests():
         acc = Accumulator()
         assert acc.add(3) == 3.0
@@ -52,19 +72,12 @@ if __name__ == "__main__":
 
         ok = False
         try:
-            # 이 코드는 에러를 발생시켜야 합니다!
             acc2.total = 123.0
         except AssertionError:
-            # 에러가 성공적으로 발생하면 ok 를 True로 변경
             ok = True
         assert ok, "total setter must block direct assignment"
-        
-        # Instructor Quick Test 출력
-        acc_quick = Accumulator()
-        print(acc_quick.add(3), acc_quick.add(4), acc_quick.total)
-        acc_quick.reset(); print(acc_quick.total)
-
 
         print("All Problem 1 tests passed.")
 
     run_tests()
+    pass
