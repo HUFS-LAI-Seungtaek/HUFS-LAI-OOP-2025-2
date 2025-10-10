@@ -108,9 +108,9 @@ if __name__ == "__main__":
             metric = Metric("Test")
             assert False, "Should not be able to instantiate abstract class"
         except TypeError:
-            pass  # Expected
+            pass
+    
 
         print("All Problem 6 tests passed.")
 
     run_tests()
-    pass
