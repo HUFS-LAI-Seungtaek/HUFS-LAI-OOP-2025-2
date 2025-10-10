@@ -37,7 +37,7 @@ def merge_freqs(maps: list[dict[str, int]]) -> dict[str, int]:
     result = {}
     for freq_dict in maps:
         for key, value in freq_dict.items():
-            result[key] = result.get(key, 0) + value
+            result[key] = result.get(key, 0) + value #이중for문 사용, GPT참조
     return result
 
 

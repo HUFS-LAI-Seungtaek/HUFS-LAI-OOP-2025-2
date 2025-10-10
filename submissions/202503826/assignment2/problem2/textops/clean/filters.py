@@ -22,7 +22,7 @@ def clean_text(s: str) -> str:
     keep = ["'", "-"]
     for ch in string.punctuation:
         if ch not in keep:
-            s = s.replace(ch, "")
+            s = s.replace(ch, "")   #for문으로 깔끔하게 하고 싶어서 GPT참조
 
     return s
 
