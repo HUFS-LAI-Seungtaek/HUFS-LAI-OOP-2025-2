@@ -11,7 +11,6 @@ def word_tokens(s: str) -> list[str]:
     if not s or s.strip() == "":
         return []
     return s.split(" ")
-    raise NotImplementedError
 
 
 if __name__ == "__main__":
