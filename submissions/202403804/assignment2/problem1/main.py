@@ -32,7 +32,7 @@ class Accumulator:
         """
         # TODO: 직접 할당을 막기 위해 예외를 발생시키세요
         # 힌트: raise AssertionError("적절한 에러 메시지")
-        raise AssertionError(" ")
+        raise AssertionError("직접 할당할 수 없습니다.")
         raise NotImplementedError
 
     def add(self, x: float) -> float:
@@ -81,5 +81,5 @@ if __name__ == "__main__":
 
         print("All Problem 1 tests passed.")
 
-    # run_tests()
+    run_tests()
     pass
