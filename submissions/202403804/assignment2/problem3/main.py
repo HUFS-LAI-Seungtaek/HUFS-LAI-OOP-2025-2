@@ -14,7 +14,7 @@ def count_tokens(tokens: list[str]) -> dict[str, int]:
     d = {}
     for token in tokens:
         d[token] = d.get(token, 0) + 1
-    raise NotImplementedError
+    return d
 
 def top_k(freqs: dict[str, int], k: int) -> list[tuple[str, int]]:
     # TODO: 구현하세요
@@ -27,7 +27,7 @@ def top_k(freqs: dict[str, int], k: int) -> list[tuple[str, int]]:
         return []
     sorted_items = sorted(freqs.items(), key=lambda item: (-item[1], item[0]))
     return sorted_items[:k]
-    raise NotImplementedError
+  
 
 def merge_freqs(maps: list[dict[str, int]]) -> dict[str, int]:
     # TODO: 구현하세요 (선택사항)
@@ -40,7 +40,7 @@ def merge_freqs(maps: list[dict[str, int]]) -> dict[str, int]:
         for key, value in freq_dict.items():
             result[key] = result.get(key, 0) + value
     return result
-    raise NotImplementedError
+   
 
 
 if __name__ == "__main__":
