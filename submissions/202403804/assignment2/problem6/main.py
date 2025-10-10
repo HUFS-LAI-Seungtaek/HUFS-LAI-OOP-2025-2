@@ -16,7 +16,6 @@ class Metric(ABC):
         # TODO: 지표 이름을 인스턴스 변수에 저장하세요
         # 힌트: self.name = name
         self.name = name
-        raise NotImplementedError
 
     @abstractmethod
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
@@ -26,7 +25,6 @@ class Metric(ABC):
         """
         # TODO: 추상 메서드이므로 구현하지 않음
         # 힌트: pass 또는 raise NotImplementedError
-        raise NotImplementedError
         pass
 
     def evaluate(self, y_true: list[int], y_pred: list[int]) -> str:
@@ -39,7 +37,7 @@ class Metric(ABC):
         # 2) return f"{self.name}: {score:.3f}"
         score = self.compute(y_true, y_pred)
         return f"{self.name}: {score:.3f}"
-        raise NotImplementedError
+   
 
 
 class Accuracy(Metric):
@@ -65,8 +63,7 @@ class Accuracy(Metric):
             return 0.0
         correct = sum(1 for t, p in zip(y_true, y_pred) if t == p)
         return correct / len(y_true)
-        raise NotImplementedError
-
+    
 
 class Precision(Metric):
     def __init__(self, positive_class: int = 1) -> None:
@@ -79,7 +76,7 @@ class Precision(Metric):
         # 2) self.positive_class = positive_class
         super().__init__("Precision")
         self.positive_class = positive_class
-        raise NotImplementedError
+    
 
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
         """
@@ -97,7 +94,7 @@ class Precision(Metric):
         if TP + FP == 0:
             return 0.0
         return TP / (TP + FP)
-        raise NotImplementedError
+  
 
 
 class Recall(Metric):
@@ -111,7 +108,7 @@ class Recall(Metric):
         # 2) self.positive_class = positive_class
         super().__init__("Recall")
         self.positive_class = positive_class
-        raise NotImplementedError
+     
 
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
         """
@@ -129,7 +126,7 @@ class Recall(Metric):
         if TP + FN == 0:
             return 0.0
         return TP / (TP + FN)
-        raise NotImplementedError
+       
 
 
 if __name__ == "__main__":
