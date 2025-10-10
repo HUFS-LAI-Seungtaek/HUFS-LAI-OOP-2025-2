@@ -6,43 +6,28 @@ Problem 3 — tokenstats (module + __main__ demo)
 """
 
 def count_tokens(tokens: list[str]) -> dict[str, int]:
-    # TODO: 구현하세요
-    # 힌트:
-    # 1) 빈 딕셔너리 생성: d = {}
-    # 2) 각 토큰을 순회하면서 카운트: d[token] = d.get(token, 0) + 1
-    # 3) 또는 collections.Counter 사용 가능 (하지만 직접 구현도 간단함)
     d = {}
     for token in tokens:
         d[token] = d.get(token, 0) + 1
     return d
+#for문 사용법과 개수 세는 알고리즘 구현은 chatGPT도움을 받았습니다.
 
 def top_k(freqs: dict[str, int], k: int) -> list[tuple[str, int]]:
-    # TODO: 구현하세요
-    # 힌트:
-    # 1) k <= 0인 경우 빈 리스트 반환
-    # 2) sorted() 함수의 key 매개변수 활용
-    # 3) 정렬 기준: (-frequency, token) -> 빈도 내림차순, 토큰 오름차순
-    # 4) 슬라이싱으로 상위 k개만: [:k]
-
     if k <= 0:
         return []
     else:
         top = sorted(freqs.items(), key=lambda x : (-x[1], x[0]))
     return top[:k]
-
+#2주차 강의자료에서 slicing 사용법 참고하였습니다.
+#sorted() 사용법은 ChatGPT도움을 받았습니다.
 
 def merge_freqs(maps: list[dict[str, int]]) -> dict[str, int]:
-    # TODO: 구현하세요 (선택사항)
-    # 힌트:
-    # 1) 결과 딕셔너리 생성: result = {}
-    # 2) 각 딕셔너리를 순회: for freq_dict in maps
-    # 3) 각 키-값을 누적: result[key] = result.get(key, 0) + value
     result = {}
     for freq_dict in maps:
         for key, value in freq_dict.items():
             result[key] = result.get(key, 0) + value
     return result
-
+#for문 순회 방식을 ChatGPT에게 물어보고 이해 후 사용했습니다.
 
 if __name__ == "__main__":
     # Demo runs only when executed directly
@@ -54,4 +39,3 @@ if __name__ == "__main__":
         g = merge_freqs([{"x":1},{"x":2,"y":3}])
         print(g)                         # {'x':3,'y':3}
     run_demo()
-    pass
