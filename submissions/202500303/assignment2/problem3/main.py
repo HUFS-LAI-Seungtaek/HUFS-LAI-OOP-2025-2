@@ -11,8 +11,8 @@ def top_k(freqs: dict[str, int], k: int) -> list[tuple[str, int]]:
     return sorted(freqs.items(), key=lambda x: (-x[1], x[0]))[:k] # gpt 도움을 받음 
     #key는 sort 정렬 기준, lambda는 임시함수 (count를 음수값으로 하여 내림차순 효과를 받음)
 
-
 def merge_freqs(maps: list[dict[str, int]]) -> dict[str, int]:
+    final_dict = {}
     for freq_dict in maps:
         for key, value in freq_dict.items():
             final_dict[key] = final_dict.get(key, 0) + value
@@ -26,5 +26,5 @@ if __name__ == "__main__":
         print(top_k(f, 2))               # [('hello',2),('ai',1)] or [('hello',2),('world',1)] (tie by token asc)
         g = merge_freqs([{"x":1},{"x":2,"y":3}])
         print(g)                         # {'x':3,'y':3}
-    #run_demo()
-    #pass
+        #run_demo()
+        pass
