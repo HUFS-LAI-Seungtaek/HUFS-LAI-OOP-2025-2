@@ -15,7 +15,7 @@ def clean_text(s: str) -> str:
     keep = {"'","-"}
     remove_punct = set(string.punctuation) - keep
     result=""
-    for ch in s :
+    for ch in s:
         if ch not in remove_punct:
             result += ch
     return result 

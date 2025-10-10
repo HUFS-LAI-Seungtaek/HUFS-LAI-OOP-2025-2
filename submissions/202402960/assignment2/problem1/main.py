@@ -69,6 +69,5 @@ if __name__ == "__main__":
         assert ok, "total setter must block direct assignment"
 
         print("All Problem 1 tests passed.")
-
-run_tests()
+    run_tests()
     
