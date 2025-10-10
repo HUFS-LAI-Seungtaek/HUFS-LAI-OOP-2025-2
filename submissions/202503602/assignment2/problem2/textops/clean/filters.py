@@ -19,8 +19,10 @@ def clean_text(s: str) -> str:
     if not isinstance(s, str):
         raise TypeError("input must be a string")
     s=s.lower()
+    remove_chars = string.punctuation.replace("'", "").replace("-", "")
+    s = s.translate(str.maketrans("", "", remove_chars))
     s=s.strip()
-    s=s.re.sub(r'\s+', ' ', s)
+    s = re.sub(r"\s+", " ", s)
     return s
 
 
