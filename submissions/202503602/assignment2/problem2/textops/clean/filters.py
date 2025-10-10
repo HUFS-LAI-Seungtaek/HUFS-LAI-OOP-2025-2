@@ -16,10 +16,11 @@ def clean_text(s: str) -> str:
     # 3) s.strip() - 앞뒤 공백 제거
     # 4) string.punctuation에서 특정 문자 제외하고 제거
     # 5) set 연산을 활용해서 keep = {"'", "-"}, 나머지는 제거
+    if not isinstance(s, str):
+        raise TypeError("input must be a string")
     s=s.lower()
     s=s.strip()
     s=s.re.sub(r'\s+', ' ', s)
-    s=re.sub(r'[!"#$%&()*+,./:;<=>?@\[\]^_`{|}~]', '', s)
     return s
 
 
