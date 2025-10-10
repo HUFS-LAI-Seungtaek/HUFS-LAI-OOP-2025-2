@@ -1,10 +1,7 @@
-import collections
-from typing import List,Dict
 
-def label_distribution(labels: List[str]) -> Dict[str, int]:
-    if not isinstance(labels, list):
-        raise TypeError("labels must be a list")
-    return dict(collections.Counter(labels))
-
-if __name__ == "__main__":
-    print(label_distribution(["cat","dog","cat"]))
+def label_distribution(labels:list[str])-> dict[str, int]:
+    freqs = {}
+    for label in labels:
+        freqs[label] = freqs.get(label,0)+1
+    return freqs
+#problem3 count_tokens 함수 참고하였습니다

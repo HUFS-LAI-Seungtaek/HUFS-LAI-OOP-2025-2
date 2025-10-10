@@ -5,9 +5,7 @@ def word_tokens(s: str) -> list[str]:
     """
     if not s or s.strip() == "":
         return []
-    tokens = s.split(" ")
-    return [token for token in tokens if token]
-    
+    return s.split(" ")
 
 
 if __name__ == "__main__":
@@ -18,4 +16,3 @@ if __name__ == "__main__":
         assert word_tokens("single") == ["single"]
         print("word.py tests passed.")
     run_tests()
-pass

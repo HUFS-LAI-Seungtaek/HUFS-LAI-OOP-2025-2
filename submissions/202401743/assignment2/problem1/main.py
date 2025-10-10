@@ -8,20 +8,24 @@ Problem 1 — Accumulator (stateful counter for AI pipelines)
 class Accumulator:
     def __init__(self, start: float = 0.0) -> None:
         self._total = start
-    def add(self,x: float) -> float:
-        self._total += x
-        return self._total
-    def reset(self) -> None:
-        self._total = 0.0
+        
 
     @property
     def total(self) -> float:
         return self._total
-    
+
     @total.setter
     def total(self, value: float) -> None:
         raise AttributeError
 
+    def add(self, x: float) -> float:
+        self._total += x
+        return self._total
+        
+
+    def reset(self) -> None:
+        self._total = 0.0
+        
 
 if __name__ == "__main__":
     def run_tests():

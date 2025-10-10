@@ -6,7 +6,7 @@ class Metric(ABC):
 
     @abstractmethod
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
-        pass 
+        pass
 
     def evaluate(self, y_true: list[int], y_pred: list[int]) -> str:
         score = self.compute(y_true, y_pred)
@@ -15,25 +15,24 @@ class Metric(ABC):
 class Accuracy(Metric):
     def __init__(self) -> None:
         super().__init__("Accuracy")
+
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
-        total = len(y_true)
-        if total == 0:
+        if not y_true:
             return 0.0
         correct = sum(1 for t, p in zip(y_true, y_pred) if t == p)
         return correct / len(y_true)
-
+        
 class Precision(Metric):
     def __init__(self, positive_class: int = 1) -> None:
         super().__init__("Precision")
         self.positive_class = positive_class
-        
+
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
         TP = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
         FP = sum(1 for t, p in zip(y_true, y_pred) if t != self.positive_class and p == self.positive_class)
-        denominator = TP + FP
-        if denominator == 0:
+        if (TP + FP) == 0:
             return 0.0
-        return TP / denominator
+        return TP / (TP+FP)
 
 class Recall(Metric):
     def __init__(self, positive_class: int = 1) -> None:
@@ -43,10 +42,9 @@ class Recall(Metric):
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
         TP = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
         FN = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p != self.positive_class)
-        denominator = TP + FN
-        if denominator == 0:
+        if (TP + FN) == 0:
             return 0.0
-        return TP / denominator
+        return TP / (TP + FN)
 
 if __name__ == "__main__":
     def run_tests():
@@ -95,5 +93,6 @@ if __name__ == "__main__":
 
         print("All Problem 6 tests passed.")
 
-    run_tests()
-    pass
+
+run_tests()
+
