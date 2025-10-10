@@ -22,7 +22,6 @@ def clean_text(s: str) -> str:
     keep = {"'", "-"}
     s = ''.join(ch for ch in s if ch not in set(string.punctuation) - keep)
     return s
-    raise NotImplementedError
 
 
 if __name__ == "__main__":
@@ -32,6 +31,5 @@ if __name__ == "__main__":
         assert clean_text("...") == ""
         assert clean_text(" A  B\tC\nD ") == "a b c d"
         print("filters.py tests passed.")
-    run_tests()
-    
+    run_tests() 
     pass
