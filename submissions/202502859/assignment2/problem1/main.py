@@ -1,4 +1,4 @@
-# problem1/main.py
+# problem1/main.py (최종 버전)
 
 class Accumulator:
     def __init__(self, start: float = 0.0) -> None:
