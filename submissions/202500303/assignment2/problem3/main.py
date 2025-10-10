@@ -6,6 +6,8 @@ def count_tokens(tokens: list[str]) -> dict[str, int]:
     return d
 
 def top_k(freqs: dict[str, int], k: int) -> list[tuple[str, int]]:
+    if k<=0:
+        return []
     return sorted(freqs.items(), key=lambda x: (-x[1], x[0]))[:k] # gpt 도움을 받음 
     #key는 sort 정렬 기준, lambda는 임시함수 (count를 음수값으로 하여 내림차순 효과를 받음)
 
