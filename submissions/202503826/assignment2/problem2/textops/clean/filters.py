@@ -19,9 +19,10 @@ def clean_text(s: str) -> str:
     s=s.lower()
     s = re.sub(r"\s+", " ", s)
     s = s.strip()
-    keep = {"'", "-"}  # 남겨둘 기호
-    punctuation_to_remove = "".join(ch for ch in string.punctuation if ch not in keep)
-    s = re.sub(f"[{re.escape(punctuation_to_remove)}]", "", s)
+    keep = ["'", "-"]
+    for ch in string.punctuation:
+        if ch not in keep:
+            s = s.replace(ch, "")   #for문으로 깔끔하게 하고 싶어서 GPT참조
 
     return s
 
