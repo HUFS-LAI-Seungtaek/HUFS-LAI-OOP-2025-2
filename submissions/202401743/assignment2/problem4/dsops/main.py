@@ -7,3 +7,4 @@ if __name__ == "__main__":
         print("dsops demo OK") 
     except Exception as e:
         print("Implement textops first:", e)
+        

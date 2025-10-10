@@ -65,3 +65,4 @@ if __name__ == "__main__":
     print("\n=== Medal Leaderboard ===")
     for rank, c in enumerate(leaderboard, start=1):
         print(f"{rank:>2}. {c}")
+        
