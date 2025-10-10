@@ -9,14 +9,10 @@ def clean_text(s: str) -> str:
     3) collapse all whitespace to single spaces
     4) remove ASCII punctuation except apostrophes (') and hyphens (-)
     """
-    # 1) s.lower() - 소문자 변환
+
     s = s.lower()
-    # 2) re.sub(r"\s+", " ", s) - 모든 연속 공백을 단일 공백으로
     s = re.sub(r"\s+", " ", s)
-    # 3) s.strip() - 앞뒤 공백 제거
     s = s.strip()
-    # 4) string.punctuation에서 특정 문자 제외하고 제거
-    # 5) set 연산을 활용해서 keep = {"'", "-"}, 나머지는 제거
     keep = {"'", "-"}
     remove = set(string.punctuation) - keep
     removing = f"[{re.escape(''.join(remove))}]"

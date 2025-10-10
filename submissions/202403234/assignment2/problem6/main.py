@@ -13,7 +13,6 @@ class Metric(ABC):
         """
         지표 이름을 저장하는 기본 생성자.
         """
-        # TODO: 지표 이름을 인스턴스 변수에 저장하세요
         self.name = name
 
 
@@ -23,16 +22,12 @@ class Metric(ABC):
         실제값과 예측값을 받아 지표를 계산하는 추상 메서드.
         구체 클래스에서 반드시 구현해야 합니다.
         """
-        # TODO: 추상 메서드이므로 구현하지 않음
-        # 힌트: pass 또는 raise NotImplementedError
         pass
 
     def evaluate(self, y_true: list[int], y_pred: list[int]) -> str:
         """
         지표를 계산하고 결과를 문자열로 반환.
         """
-        # TODO: compute 메서드를 호출하여 지표를 계산하고 문자열로 반환하세요
-        # 힌트:
         score = self.compute(y_true, y_pred)
         return f"{self.name}: {score:.3f}"
 
@@ -43,16 +38,12 @@ class Accuracy(Metric):
         """
         정확도 지표 초기화.
         """
-        # TODO: 부모 클래스 생성자를 호출하세요
         super().__init__("Accuracy")
 
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
         """
         정확도 계산: (맞은 예측 수) / (전체 예측 수)
         """
-        # TODO: 정확도를 계산하세요
-        # 힌트:
-        # 1) 빈 리스트인 경우 0.0 반환
         if not y_true:
             return 0.0
         correct = sum(1 for t, p in zip(y_true, y_pred) if t == p)
@@ -64,8 +55,6 @@ class Precision(Metric):
         """
         정밀도 지표 초기화.
         """
-        # TODO: 부모 클래스 생성자 호출과 양성 클래스 저장
-        # 힌트:
         super().__init__("Precision")
         self.positive_class = positive_class
   
@@ -73,11 +62,6 @@ class Precision(Metric):
         """
         정밀도 계산: TP / (TP + FP)
         """
-        # TODO: 정밀도를 계산하세요
-        # 힌트:
-        # 1) TP = 실제 양성을 양성으로 예측한 수
-        # 2) FP = 실제 음성을 양성으로 예측한 수
-        # 3) 분모가 0이면 0.0 반환
         TP = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
         FP = sum(1 for t, p in zip(y_true, y_pred) if t != self.positive_class and p == self.positive_class)
         a=TP+FP
@@ -90,8 +74,6 @@ class Recall(Metric):
         """
         재현율 지표 초기화.
         """
-        # TODO: 부모 클래스 생성자 호출과 양성 클래스 저장
-        # 힌트:
         super().__init__("Recall")
         self.positive_class = positive_class
       
@@ -100,11 +82,6 @@ class Recall(Metric):
         """
         재현율 계산: TP / (TP + FN)
         """
-        # TODO: 재현율을 계산하세요
-        # 힌트:
-        # 1) TP = 실제 양성을 양성으로 예측한 수
-        # 2) FN = 실제 양성을 음성으로 예측한 수
-        # 3) 분모가 0이면 0.0 반환
         TP = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
         FN = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p != self.positive_class)
         b=TP+FN

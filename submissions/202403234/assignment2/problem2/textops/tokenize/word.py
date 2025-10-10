@@ -11,11 +11,10 @@ def word_tokens(s: str) -> list[str]:
     Split on single spaces; empty/whitespace-only -> [].
     Assume s is already normalized by clean_text.
     """
-    # 1) 빈 문자열이나 공백만 있는 경우 체크
+
     if not s or s.strip() == "":
         return []
-    
-    # 2) 단일 공백으로 분할
+
     s = s.split(" ")
     s = [t for t in s if t != ""]
 
