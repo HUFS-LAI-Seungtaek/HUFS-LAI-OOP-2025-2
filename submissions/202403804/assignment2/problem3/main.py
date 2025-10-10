@@ -52,5 +52,5 @@ if __name__ == "__main__":
         print(top_k(f, 2))               # [('hello',2),('ai',1)] or [('hello',2),('world',1)] (tie by token asc)
         g = merge_freqs([{"x":1},{"x":2,"y":3}])
         print(g)                         # {'x':3,'y':3}
-    # run_demo()
+    run_demo()
     pass
