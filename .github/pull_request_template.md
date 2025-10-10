@@ -1,9 +1,9 @@
 # Assignment Submission
 
 ## Student Information
-- **Student ID**: [Your Student ID]
-- **Name**: [Your Full Name]
-- **Assignment**: [Assignment Number]
+- **Student ID**: 202500303
+- **Name**: 신지원
+- **Assignment**: 2nd Assignment by 202500303 (Jiwon Shin)
 
 ## Changed Files
 <!--
