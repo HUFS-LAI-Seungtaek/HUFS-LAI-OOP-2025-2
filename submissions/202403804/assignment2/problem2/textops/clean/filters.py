@@ -16,6 +16,12 @@ def clean_text(s: str) -> str:
     # 3) s.strip() - 앞뒤 공백 제거
     # 4) string.punctuation에서 특정 문자 제외하고 제거
     # 5) set 연산을 활용해서 keep = {"'", "-"}, 나머지는 제거
+    s = s.lower()
+    s = re.sub(r"\s+", " ", s)
+    s = s.strip()
+    keep = {"'", "-"}
+    s = ''.join(ch for ch in s if ch not in set(string.punctuation) - keep)
+    return s
     raise NotImplementedError
 
 
@@ -26,5 +32,6 @@ if __name__ == "__main__":
         assert clean_text("...") == ""
         assert clean_text(" A  B\tC\nD ") == "a b c d"
         print("filters.py tests passed.")
-    # run_tests()
+    run_tests()
+    
     pass
