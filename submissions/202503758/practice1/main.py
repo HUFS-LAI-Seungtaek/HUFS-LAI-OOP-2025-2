@@ -12,14 +12,29 @@ class Country:
 
     # Arithmetic overriding → 메달 합산
     def __add__(self, other):
-        pass
+        # 예외 처리 AI 도움 받음
+        if not isinstance(other, Country):
+            return NotImplemented
+
+        total_gold = self.gold + other.gold
+        total_silver = self.silver + other.silver
+        total_bronze = self.bronze + other.bronze
+
+        return Country(self.name, total_gold, total_silver, total_bronze)
 
     # Comparison overriding → 금 > 은 > 동 순서로 비교
-    def __lt__(self, other: "Country") -> bool:
-        pass
+    def __lt__(self, other: "Country") -> bool: 
+        if not isinstance(other, Country):
+            return NotImplemented
+        
+        # tuple 연산 AI 도움 받음
+        return (self.gold, self.silver, self.bronze) < (other.gold, other.silver, other.bronze)
 
     def __eq__(self, other: object) -> bool:
-        pass 
+        if not isinstance(other, Country):
+            return NotImplemented
+        
+        return (self.gold, self.silver, self.bronze) == (other.gold, other.silver, other.bronze)
 
 
 if __name__ == "__main__":
@@ -39,7 +54,9 @@ if __name__ == "__main__":
     countries = {}
 
     # TODO: tqdm으로 집계 진행
-    for country, medal in events:
+    from tqdm import tqdm
+    
+    for country, medal in tqdm(events, desc="Processing events"):
         time.sleep(0.1)  # 진행바 확인용 딜레이
         if country not in countries:
             countries[country] = Country(country)
