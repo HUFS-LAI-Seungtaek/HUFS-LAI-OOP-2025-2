@@ -25,7 +25,6 @@ def merge_freqs(maps: list[dict[str, int]]) -> dict[str, int]:
         for key,value in freq_dict.items():
             result[key] = result.get(key,0) + value
     return result
->>>>>>> c5507088795f48cba1a5a3417e0410109c37128c
 
 if __name__ == "__main__":
     # Demo runs only when executed directly
