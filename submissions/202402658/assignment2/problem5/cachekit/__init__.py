@@ -19,4 +19,4 @@ class Cache:
     def clear(self) -> None :
         self._d.clear()
 
-
+__all__ = ["Cache", "print_version_info", "VERSION"]
