@@ -1,7 +1,7 @@
 from typing import Optional, Tuple, List
 import random
-
-def train_test_split(seq: List, test_ratio, seed = None):
+#지피티 참고해서 구성했습니다
+def train_test_split(seq, test_ratio, seed = None):
 
     if not (0.0 <= test_ratio <= 1.0):
         raise ValueError("test_ratio must be between 0.0 and 1.0")
