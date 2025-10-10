@@ -6,9 +6,9 @@ if __name__ == "__main__":
 
     c = Cache()
     c.put("a", 1)
-    print(len(c), c.get("a"))   # 1 1
+    print(len(c), c.get("a"))   
     c.put("a", 999)
-    print(c.get("a"))           # 999
+    print(c.get("a"))           
     c.clear()
-    print(len(c))               # 0
-    print(c.get("missing", 42)) # 42
+    print(len(c))               
+    print(c.get("missing", 42)) 
