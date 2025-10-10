@@ -7,7 +7,8 @@ def train_test_split(seq: list, test_ratio: float, seed: int | None = None) -> t
     if seed is not None:
         random.seed(seed)
         random.shuffle(seq)
-    
+    #random 함수 사용법을 ChatGPT를 통해 이해하고 사용하였습니다.
+
     if test_ratio == 0.0:
         return seq[:], []
     elif test_ratio == 1.0:
