@@ -1,5 +1,3 @@
-from . import train_test_split, label_distribution
-
 if __name__ == "__main__":
     from . import train_test_split, label_distribution
 

@@ -40,11 +40,11 @@ class Recall(Metric):
         self.positive_class = positive_class
 
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
-        TN = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
+        TP = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
         FN = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p != self.positive_class)
-        if TN + FN == 0:
+        if TP + FN == 0:
             return 0.0
-        return TN / (TN + FN)
+        return TP / (TP + FN)
 
 if __name__ == "__main__":
     # -------------------------------
@@ -96,5 +96,5 @@ if __name__ == "__main__":
 
         print("All Problem 6 tests passed.")
  
-    run_tests()
-    pass
+    #run_tests()
+    #pass

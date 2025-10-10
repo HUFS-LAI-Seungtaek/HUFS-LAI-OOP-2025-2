@@ -1,4 +1,3 @@
-
 VERSION = "1.0"
 
 def print_version_info():

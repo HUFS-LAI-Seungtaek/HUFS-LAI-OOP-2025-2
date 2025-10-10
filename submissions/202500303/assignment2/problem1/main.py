@@ -15,7 +15,7 @@ class Accumulator:
 
     @total.setter
     def total(self, value: float) -> None:
-        AssertionError("적절한 에러 메시지")
+        raise AssertionError("total is read-only")
 
     def add(self, x: float) -> float:
         self._total += x
@@ -48,4 +48,4 @@ if __name__ == "__main__":
         print("All Problem 1 tests passed.")
 
     #run_tests()
-    pass
+    #pass
