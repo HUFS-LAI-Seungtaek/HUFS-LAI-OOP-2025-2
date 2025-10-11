@@ -1,22 +1,22 @@
 VERSION = "1.0"
 
-def print_version_info():
+def print_version_info() -> None:
     print(f"cachekit {VERSION}")
 
 class Cache:
-    def __init__(self):
+    def __init__(self) -> None:
         self._d: dict = {}
 
-    def put(self, key, value):
+    def put(self, key, value) -> None:
         self._d[key] = value
 
     def get(self, key, default=None):
         return self._d.get(key, default)
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self._d)
 
-    def clear(self) :
+    def clear(self) -> None:
         self._d.clear()
 
 __all__ = ["Cache", "print_version_info", "VERSION"]

@@ -1,7 +1,7 @@
 from typing import List, Dict
-from collections import Counter #지피티에게 도움 받았음
+from collections import Counter
 
-def label_distribution(labels):
+def label_distribution(labels: List[str]) -> Dict[str, int]:
 
     return dict(Counter(labels))
 
