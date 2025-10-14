@@ -51,8 +51,8 @@ if __name__ == "__main__":
         g = merge_freqs([{"x":1},{"x":2,"y":3}])
         print(g)                         # {'x':3,'y':3}
     run_demo()
-<<<<<<< HEAD
-    pass
-=======
+
     
->>>>>>> main
+
+    
+
