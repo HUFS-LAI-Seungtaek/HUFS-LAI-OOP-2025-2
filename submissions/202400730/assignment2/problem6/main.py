@@ -14,8 +14,7 @@ class Metric(ABC):
         지표 이름을 저장하는 기본 생성자.
         """
         # TODO: 지표 이름을 인스턴스 변수에 저장하세요
-        # 힌트: self.name = name
-        raise NotImplementedError
+        self.name = name
 
     @abstractmethod
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
@@ -24,7 +23,6 @@ class Metric(ABC):
         구체 클래스에서 반드시 구현해야 합니다.
         """
         # TODO: 추상 메서드이므로 구현하지 않음
-        # 힌트: pass 또는 raise NotImplementedError
         pass
 
     def evaluate(self, y_true: list[int], y_pred: list[int]) -> str:
@@ -32,10 +30,8 @@ class Metric(ABC):
         지표를 계산하고 결과를 문자열로 반환.
         """
         # TODO: compute 메서드를 호출하여 지표를 계산하고 문자열로 반환하세요
-        # 힌트:
-        # 1) score = self.compute(y_true, y_pred)
-        # 2) return f"{self.name}: {score:.3f}"
-        raise NotImplementedError
+        score = self.compute(y_true, y_pred)
+        return f"{self.name}: {score:.3f}"
 
 
 class Accuracy(Metric):
@@ -44,19 +40,20 @@ class Accuracy(Metric):
         정확도 지표 초기화.
         """
         # TODO: 부모 클래스 생성자를 호출하세요
-        # 힌트: super().__init__("Accuracy")
-        raise NotImplementedError
+        super().__init__("Accuracy")
 
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
         """
         정확도 계산: (맞은 예측 수) / (전체 예측 수)
         """
         # TODO: 정확도를 계산하세요
-        # 힌트:
-        # 1) 빈 리스트인 경우 0.0 반환
-        # 2) correct = sum(1 for t, p in zip(y_true, y_pred) if t == p)
-        # 3) return correct / len(y_true)
-        raise NotImplementedError
+        if not y_true:
+            return 0.0
+        
+        # 실제값(t)과 예측값(p)이 일치할 때 1을 더함
+        correct = sum(1 for t, p in zip(y_true, y_pred) if t == p)
+        
+        return correct / len(y_true)
 
 
 class Precision(Metric):
@@ -65,23 +62,34 @@ class Precision(Metric):
         정밀도 지표 초기화.
         """
         # TODO: 부모 클래스 생성자 호출과 양성 클래스 저장
-        # 힌트:
-        # 1) super().__init__("Precision")
-        # 2) self.positive_class = positive_class
-        raise NotImplementedError
+        super().__init__("Precision")
+        self.positive_class = positive_class
 
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
         """
         정밀도 계산: TP / (TP + FP)
         """
         # TODO: 정밀도를 계산하세요
-        # 힌트:
-        # 1) TP = 실제 양성을 양성으로 예측한 수
-        # 2) FP = 실제 음성을 양성으로 예측한 수
-        # 3) 분모가 0이면 0.0 반환
-        # 4) TP = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
-        # 5) FP = sum(1 for t, p in zip(y_true, y_pred) if t != self.positive_class and p == self.positive_class)
-        raise NotImplementedError
+        
+        # 양성 클래스를 기준으로 TP와 FP를 계산
+        tp = 0  # True Positive: 실제 1, 예측 1
+        fp = 0  # False Positive: 실제 0, 예측 1
+        
+        pos_class = self.positive_class
+        
+        for t, p in zip(y_true, y_pred):
+            if p == pos_class:
+                if t == pos_class:
+                    tp += 1
+                else:
+                    fp += 1
+        
+        denominator = tp + fp # 분모: 양성으로 예측한 전체 수 (Predicted Positive)
+        
+        if denominator == 0:
+            return 0.0
+            
+        return tp / denominator
 
 
 class Recall(Metric):
@@ -90,23 +98,34 @@ class Recall(Metric):
         재현율 지표 초기화.
         """
         # TODO: 부모 클래스 생성자 호출과 양성 클래스 저장
-        # 힌트:
-        # 1) super().__init__("Recall")
-        # 2) self.positive_class = positive_class
-        raise NotImplementedError
+        super().__init__("Recall")
+        self.positive_class = positive_class
 
     def compute(self, y_true: list[int], y_pred: list[int]) -> float:
         """
         재현율 계산: TP / (TP + FN)
         """
         # TODO: 재현율을 계산하세요
-        # 힌트:
-        # 1) TP = 실제 양성을 양성으로 예측한 수
-        # 2) FN = 실제 양성을 음성으로 예측한 수
-        # 3) 분모가 0이면 0.0 반환
-        # 4) TP = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p == self.positive_class)
-        # 5) FN = sum(1 for t, p in zip(y_true, y_pred) if t == self.positive_class and p != self.positive_class)
-        raise NotImplementedError
+        
+        # 양성 클래스를 기준으로 TP와 FN을 계산
+        tp = 0  # True Positive: 실제 1, 예측 1
+        fn = 0  # False Negative: 실제 1, 예측 0
+        
+        pos_class = self.positive_class
+        
+        for t, p in zip(y_true, y_pred):
+            if t == pos_class: # 실제 양성인 경우 (Actual Positive)
+                if p == pos_class:
+                    tp += 1
+                else:
+                    fn += 1
+        
+        denominator = tp + fn # 분모: 실제 양성인 전체 수 (Actual Positive)
+        
+        if denominator == 0:
+            return 0.0
+            
+        return tp / denominator
 
 
 if __name__ == "__main__":
@@ -114,7 +133,8 @@ if __name__ == "__main__":
     # Student self-checks (uncomment)
     # -------------------------------
     def run_tests():
-        # 테스트 데이터
+        
+        
         y_true = [1, 0, 1, 1, 0, 1, 0, 0]
         y_pred = [1, 0, 0, 1, 0, 1, 1, 0]
 
@@ -155,9 +175,9 @@ if __name__ == "__main__":
             metric = Metric("Test")
             assert False, "Should not be able to instantiate abstract class"
         except TypeError:
-            pass  # Expected
+            pass # Expected
 
         print("All Problem 6 tests passed.")
 
-    # run_tests()
-    pass
+    run_tests()
+    # pass
